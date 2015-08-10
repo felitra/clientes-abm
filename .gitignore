@@ -1,0 +1,10 @@
+# ignore all target directories
+target/
+bin/
+.settings/
+dist/
+.project
+.classpath
+/.checkstyle
+/lib/
+.checkstyle
