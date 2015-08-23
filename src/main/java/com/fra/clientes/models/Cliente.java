@@ -8,7 +8,9 @@ public class Cliente {
 
 	private String telefono;
 
-	private Direccion direccion;
+	private String direccion;
+
+	private String establecimiento;
 
 	public int getId() {
 		return id;
@@ -34,19 +36,26 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	public Direccion getDireccion() {
+	public String getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(Direccion direccion) {
+	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public String getEstablecimiento() {
+		return establecimiento;
+	}
+
+	public void setEstablecimiento(String establecimiento) {
+		this.establecimiento = establecimiento;
 	}
 
 	@Override
 	public String toString() {
 		return "Cliente: " + this.nombreApellido + " con telefono: "
-				+ this.telefono + " y direccion: "
-				+ this.direccion.getDireccion();
+				+ this.telefono + " y direccion: " + this.direccion;
 	}
 
 }
