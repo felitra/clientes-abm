@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ClientesHelloWorld {
+public class ClientesController {
 
 	@RequestMapping("/home")
 	public ModelAndView helloWorld() {
