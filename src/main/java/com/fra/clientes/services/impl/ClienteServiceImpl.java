@@ -2,20 +2,19 @@ package com.fra.clientes.services.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fra.clientes.dao.ClienteDao;
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
 
+@Service
 public class ClienteServiceImpl implements ClienteService {
 
 	private ClienteDao clienteDao;
 
-	public void setPersonDAO(ClienteDao clienteDao) {
-		this.clienteDao = clienteDao;
-	}
-
+	
 	@Transactional
 	public void addCliente(Cliente c) {
 		clienteDao.addCliente(c);
@@ -39,6 +38,14 @@ public class ClienteServiceImpl implements ClienteService {
 	@Transactional
 	public List<Cliente> getClientes() {
 		return clienteDao.getClientes();
+	}
+
+	public void setClienteDao(ClienteDao clienteDao) {
+		this.clienteDao = clienteDao;
+	}
+
+	public ClienteDao getClienteDao() {
+		return clienteDao;
 	}
 
 }
