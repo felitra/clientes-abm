@@ -2,6 +2,7 @@ package com.fra.clientes.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import com.fra.clientes.services.ClienteService;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
+	@Autowired
 	private ClienteDao clienteDao;
 
 	

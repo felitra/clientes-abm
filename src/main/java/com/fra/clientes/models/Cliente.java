@@ -1,44 +1,49 @@
 package com.fra.clientes.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "clientes")
 public class Cliente {
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
-	@Column(name = "nom_ape")
-	private String nombreApellido;
-
+	private String nombre;
+	
+	private String apellido;
+	
 	private String telefono;
 
 	private String direccion;
 
 	private String establecimiento;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getNombreApellido() {
-		return nombreApellido;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombreApellido(String nombreApellido) {
-		this.nombreApellido = nombreApellido;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getTelefono() {
@@ -67,8 +72,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente: " + this.nombreApellido + " con telefono: "
-				+ this.telefono + " y direccion: " + this.direccion;
+		return String.format("Cliente: %s %s con telefono: %s y direccion: %s", nombre, apellido, telefono, direccion);
 	}
 
 }

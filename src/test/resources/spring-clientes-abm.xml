@@ -12,8 +12,7 @@
 	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- MySQL configuration -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/renzo-db" />
 		<property name="username" value="root" />

@@ -1,28 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Spring MVC Tutorial by Crunchify - Hello World Spring MVC
-	Example</title>
-<style type="text/css">
-body {
-	background-image: url('http://crunchify.com/bg.png');
-}
-</style>
-</head>
-<body>${message}
-	<br>
-	<br>
-	<div
-		style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align: center;">
-
-		Spring MCV Tutorial by <a href="http://crunchify.com">Crunchify</a>.
-		Click <a
-			href="http://crunchify.com/category/java-web-development-tutorial/"
-			target="_blank">here</a> for all Java and <a
-			href='http://crunchify.com/category/spring-mvc/' target='_blank'>here</a>
-		for all Spring MVC, Web Development examples.<br>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+		<h1 align="center">Lista de clientes de Eduardo Felitti</h1>
+			<div class="container">
+				<h2>Bordered Table</h2>
+				<p>The .table-bordered class adds borders to a table:</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+	        			<th>Nombre</th>
+	        			<th>Apellido</th>
+	       				<th>Telefono</th>
+	      				<th>Direccion</th>
+	      				<th>Establecimiento</th>
+	      				<th>Accion</th>	      				
+	      				</tr>
+	    			</thead>
+	    			<tbody>
+		      			<tr>
+					        <td>John</td>
+					        <td>Doe</td>
+					        <td>telefono</td>
+					        <td>direccion</td>
+					        <td>establecimiento</td>
+					        <td></td>
+	      				</tr>
+	    			</tbody>
+	  			</table>
+			</div>
+		</div>
+	</body>
 </html>

@@ -16,11 +16,14 @@ import com.fra.clientes.services.ClienteService;
 @Controller
 public class ClientesController {
 
+	@Autowired
 	private ClienteService clienteService;
 
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
 	public ModelAndView helloWorld() {
 
+		//TODO: Usar el home ACÁ
+		
 		String message = "<br><div style='text-align:center;'>"
 				+ "<h3>********** Hello World, Spring MVC Tutorial</h3>This message is coming from CrunchifyHelloWorld.java **********</div><br><br>";
 		return new ModelAndView("home", "message", message);

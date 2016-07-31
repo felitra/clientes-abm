@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fra.clientes.dao.ClienteDao;
@@ -15,6 +16,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	// private static final Logger logger = LoggerFactory
 	// .getLogger(ClienteDaoImpl.class);
 
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sf) {
