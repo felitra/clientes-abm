@@ -1,5 +1,8 @@
 package com.fra.clientes.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,13 +23,11 @@ public class ClientesController {
 	private ClienteService clienteService;
 
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
-	public ModelAndView helloWorld() {
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
 
 		//TODO: Usar el home ACÁ
 		
-		String message = "<br><div style='text-align:center;'>"
-				+ "<h3>********** Hello World, Spring MVC Tutorial</h3>This message is coming from CrunchifyHelloWorld.java **********</div><br><br>";
-		return new ModelAndView("home", "message", message);
+		return new ModelAndView("home", "Lista", clienteService.getClientes()) ;
 	}
 
 	@Autowired(required = true)

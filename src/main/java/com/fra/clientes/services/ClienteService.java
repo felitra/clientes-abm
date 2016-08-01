@@ -10,9 +10,9 @@ public interface ClienteService {
 
 	public void updateCliente(Cliente c);
 
-	public void removeCliente(int id);
+	public void removeCliente(long id);
 
-	public Cliente getClienteById(int id);
+	public Cliente getClienteById(long id);
 
 	public List<Cliente> getClientes();
 }

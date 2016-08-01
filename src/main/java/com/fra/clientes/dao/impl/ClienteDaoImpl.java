@@ -37,18 +37,18 @@ public class ClienteDaoImpl implements ClienteDao {
 //				+ c.toString());
 	}
 
-	public void removeCliente(int id) {
+	public void removeCliente(long id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Cliente c = (Cliente) session.load(Cliente.class, new Integer(id));
+		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
 		if (null != c) {
 			session.delete(c);
 		}
 //		logger.info("Cliente borrado exitosamente, Detalles= " + c.toString());
 	}
 
-	public Cliente getClienteById(int id) {
+	public Cliente getClienteById(long id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Cliente c = (Cliente) session.load(Cliente.class, new Integer(id));
+		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
 //		logger.info("Cliente hallado exitosamente, Detalles=" + c.toString());
 		return c;
 	}
@@ -56,8 +56,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	@SuppressWarnings("unchecked")
 	public List<Cliente> getClientes() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Cliente> clientesList = session.createQuery("from clientes")
-				.list();
+		List<Cliente> clientesList = session.createQuery("from Cliente").list();
 		return clientesList;
 	}
 

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -22,9 +23,18 @@
 	       				<th>Telefono</th>
 	      				<th>Direccion</th>
 	      				<th>Establecimiento</th>
-	      				<th>Accion</th>	      				
+<!-- 	      				<th>Accion</th>	      				 -->
 	      				</tr>
 	    			</thead>
+	    			<c:forEach var="Cliente" items="Lista">
+	    				<tr>
+	    					<td>${Cliente.nombre}</td>
+	    					<td>${Cliente.apellido}</td>
+	    					<td>${Cliente.telefono}</td>
+	    					<td>${Cliente.direccion}</td>
+	    					<td>${Cliente.establecimiento}</td>
+	    				</tr>
+	    			</c:forEach>
 	    			<tbody>
 		      			<tr>
 					        <td>John</td>

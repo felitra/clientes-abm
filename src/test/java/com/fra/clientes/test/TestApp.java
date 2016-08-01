@@ -3,6 +3,8 @@
  */
 package com.fra.clientes.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +27,21 @@ public class TestApp {
 	
 	@Test
 	public void testApp(){
+	
+//		Cliente cliente = new Cliente();
+//		
+//		cliente.setNombre("Aasd");
+//		cliente.setApellido("Felitti");
+//		cliente.setTelefono("130");
+//		cliente.setDireccion("Direcicon");
+//		cliente.setEstablecimiento("asdas");		
+//		
+//		clienteService.addCliente(cliente);
+				
+		List<Cliente> clientes  = clienteService.getClientes();
 		
-		Cliente cliente = new Cliente();
+		System.out.println(clientes);
 		
-		cliente.setNombre("Renzo");
-		cliente.setApellido("Felitti");
-		cliente.setDireccion("Corvalan 2626");
-		cliente.setTelefono("46025719");
-		cliente.setEstablecimiento("Casa");
-		
-		clienteService.addCliente(cliente);
 	}
 	
 }

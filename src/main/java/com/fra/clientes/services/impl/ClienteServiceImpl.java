@@ -28,12 +28,12 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Transactional
-	public void removeCliente(int id) {
+	public void removeCliente(long id) {
 		clienteDao.removeCliente(id);
 	}
 
 	@Transactional
-	public Cliente getClienteById(int id) {
+	public Cliente getClienteById(long id) {
 		return clienteDao.getClienteById(id);
 	}
 

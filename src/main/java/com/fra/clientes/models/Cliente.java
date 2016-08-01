@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
+//@Table(name = "cliente")
 public class Cliente {
 
 	@Id
@@ -21,7 +23,7 @@ public class Cliente {
 	private String direccion;
 
 	private String establecimiento;
-
+	
 	public long getId() {
 		return id;
 	}
