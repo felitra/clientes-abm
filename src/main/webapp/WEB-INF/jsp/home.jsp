@@ -13,8 +13,8 @@
 		<div class="container-fluid">
 		<h1 align="center">Lista de clientes de Eduardo Felitti</h1>
 			<div class="container">
-				<h2>Bordered Table</h2>
-				<p>The .table-bordered class adds borders to a table:</p>
+				<br>
+				<br>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -26,7 +26,7 @@
 <!-- 	      				<th>Accion</th>	      				 -->
 	      				</tr>
 	    			</thead>
-	    			<c:forEach var="Cliente" items="Lista">
+	    			<c:forEach var="Cliente" items="${Lista}">
 	    				<tr>
 	    					<td>${Cliente.nombre}</td>
 	    					<td>${Cliente.apellido}</td>
@@ -35,16 +35,6 @@
 	    					<td>${Cliente.establecimiento}</td>
 	    				</tr>
 	    			</c:forEach>
-	    			<tbody>
-		      			<tr>
-					        <td>John</td>
-					        <td>Doe</td>
-					        <td>telefono</td>
-					        <td>direccion</td>
-					        <td>establecimiento</td>
-					        <td></td>
-	      				</tr>
-	    			</tbody>
 	  			</table>
 			</div>
 		</div>

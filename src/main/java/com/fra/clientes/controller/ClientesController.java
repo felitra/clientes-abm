@@ -27,14 +27,20 @@ public class ClientesController {
 
 		//TODO: Usar el home ACÁ
 		
-		return new ModelAndView("home", "Lista", clienteService.getClientes()) ;
+		ModelAndView modelAndView = new ModelAndView("home");
+		modelAndView.addObject("Lista", clienteService.getClientes());
+		
+		return modelAndView;
 	}
+	
+//	@RequestMapping(value = "/cliente/add" , method = RequestMethod.GET)
+//	public ModelAndView addClient(HttpServletRequest request, HttpServletResponse response) {
+//		
+//		ModelAndView modelAndView = new ModelAndView("NewClient");
+//		
+//		return modelAndView;
+//	}
 
-	@Autowired(required = true)
-	@Qualifier(value = "clienteService")
-	public void setClienteService(ClienteService cs) {
-		this.clienteService = cs;
-	}
 
 	@RequestMapping(value = "/clientes", method = RequestMethod.GET)
 	public String listClientes(Model model) {
@@ -71,5 +77,11 @@ public class ClientesController {
 		model.addAttribute("cliente", this.clienteService.getClienteById(id));
 		model.addAttribute("listClientes", this.clienteService.getClientes());
 		return "cliente";
+	}
+	
+	@Autowired(required = true)
+	@Qualifier(value = "clienteService")
+	public void setClienteService(ClienteService cs) {
+		this.clienteService = cs;
 	}
 }
