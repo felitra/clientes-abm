@@ -24,6 +24,18 @@ public class Cliente {
 
 	private String establecimiento;
 	
+	public Cliente (){
+		
+	}
+	
+	public Cliente(String nombre, String apellido, String telefono, String direccion, String establecimiento){
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.telefono=telefono;
+		this.direccion=direccion;
+		this.establecimiento=establecimiento;
+	}
+	
 	public long getId() {
 		return id;
 	}

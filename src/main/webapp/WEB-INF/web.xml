@@ -45,9 +45,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/home.jsp</url-pattern>
-        <url-pattern>/home.html</url-pattern>
-        <url-pattern>*.html</url-pattern>
-    </servlet-mapping>
+		<url-pattern>/</url-pattern>
+    </servlet-mapping>    
     
 </web-app>
