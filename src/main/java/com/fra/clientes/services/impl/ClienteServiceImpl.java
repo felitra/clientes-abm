@@ -28,8 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Transactional
-	public void removeCliente(long id) {
-		clienteDao.removeCliente(id);
+	public void deleteClienteById(long id) {
+		clienteDao.deleteClienteById(id);
 	}
 
 	@Transactional

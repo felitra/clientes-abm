@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,10 +27,10 @@ public class ClientesController {
 		
 		return modelAndView;
 	}
-		
+	
 	@RequestMapping(value = "/Agregar Cliente" , method = RequestMethod.GET)
-	public ModelAndView addClient(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView modelAndView = new ModelAndView("NewClient");
+	public ModelAndView redirectNewCliente(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView modelAndView = new ModelAndView("NewCliente");
 		return modelAndView;
 	}	
 
@@ -48,23 +49,43 @@ public class ClientesController {
 		
 		return "redirect:home";
 	}
-//
-//	@RequestMapping("/remove/{id}")
-//	public String removeCliente(@PathVariable("id") int id) {
-//
-//		this.clienteService.removeCliente(id);
-//		return "redirect:/clientes";
-//	}
-//
-//	@RequestMapping("/edit/{id}")
-//	public String editCliente(@PathVariable("id") int id, Model model) {
-//		model.addAttribute("cliente", this.clienteService.getClienteById(id));
-//		model.addAttribute("listClientes", this.clienteService.getClientes());
-//		return "cliente";
-//	}
 	
-//	@Autowired(required = true)
-//	@Qualifier(value = "clienteService")
+	@RequestMapping(value = "/Editar Cliente/{id}" , method = RequestMethod.GET)
+	public ModelAndView redirectEdit(@PathVariable("id") long id , HttpServletRequest request, HttpServletResponse response) {
+		
+		Cliente cliente = clienteService.getClienteById(id);
+		ModelAndView modelAndView = new ModelAndView("EditCliente");
+		modelAndView.addObject("Cliente", cliente);
+		
+		return modelAndView;
+	}	
+	
+	@RequestMapping(value = "/Editar Cliente", method = RequestMethod.POST)
+	public String editCliente(HttpServletRequest request, HttpServletResponse response) {
+
+		long id = Long.valueOf(request.getParameter("id"));
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String direccion = request.getParameter("direccion");
+		String telefono = request.getParameter("telefono");
+		String establecimiento = request.getParameter("establecimiento");
+		
+		Cliente cliente = new Cliente(nombre,apellido,telefono,direccion,establecimiento);
+		cliente.setId(id);
+		
+		clienteService.updateCliente(cliente);
+				
+		return "redirect:home";
+	}	
+	
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String deleteCliente(@PathVariable("id") long id) {
+		
+		this.clienteService.deleteClienteById(id);
+		return "redirect:/home";
+	}
+
 	public void setClienteService(ClienteService cs) {
 		this.clienteService = cs;
 	}

@@ -8,7 +8,7 @@ public interface ClienteDao {
 
 	public void addCliente(Cliente c);
 	public void updateCliente(Cliente c);
-	public void removeCliente(long id);
+	public void deleteClienteById(long id);
 	public Cliente getClienteById(long id);
 	public List<Cliente> getClientes();
 }

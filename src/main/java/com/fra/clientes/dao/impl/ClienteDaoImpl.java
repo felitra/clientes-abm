@@ -37,7 +37,7 @@ public class ClienteDaoImpl implements ClienteDao {
 //				+ c.toString());
 	}
 
-	public void removeCliente(long id) {
+	public void deleteClienteById(long id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
 		if (null != c) {

@@ -10,7 +10,7 @@ public interface ClienteService {
 
 	public void updateCliente(Cliente c);
 
-	public void removeCliente(long id);
+	public void deleteClienteById(long id);
 
 	public Cliente getClienteById(long id);
 
