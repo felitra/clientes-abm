@@ -28,9 +28,10 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 			</props>
 		</property>
-		 <property name="packagesToScan" value="com.fra.clientes.models" />	
+		<property name="packagesToScan" value="com.fra.clientes.models" />	
 	</bean>
 
 	<bean id="clienteDao" class="com.fra.clientes.dao.impl.ClienteDaoImpl">
