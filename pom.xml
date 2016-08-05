@@ -11,7 +11,6 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<clientes-abm.version>1.0.0-SNAPSHOT</clientes-abm.version>
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<slf4j.logging.version>1.7.0</slf4j.logging.version>
 		<log4j.logging.version>1.2.14</log4j.logging.version>
