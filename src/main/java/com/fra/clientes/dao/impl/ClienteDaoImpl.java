@@ -2,10 +2,9 @@ package com.fra.clientes.dao.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +14,7 @@ import com.fra.clientes.models.Cliente;
 @Repository
 public class ClienteDaoImpl implements ClienteDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(ClienteDaoImpl.class);
+	private static final Logger LOGGER = Logger.getLogger(ClienteDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -27,13 +26,13 @@ public class ClienteDaoImpl implements ClienteDao {
 	public void addCliente(Cliente c) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(c);
-		logger.info("Cliente almacenado exitosamente, Detalles= " + c.toString());
+		LOGGER.info("Cliente almacenado exitosamente, Detalles= " + c.toString());
 	}
 
 	public void updateCliente(Cliente c) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(c);
-		logger.info("Cliente actualizado exitosamente, Detalles= " + c.toString());
+		LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());
 	}
 
 	public void deleteClienteById(long id) {
@@ -42,13 +41,13 @@ public class ClienteDaoImpl implements ClienteDao {
 		if (null != c) {
 			session.delete(c);
 		}
-		logger.info("Cliente borrado exitosamente, Detalles= " + c.toString());
+		LOGGER.info("Cliente borrado exitosamente, Detalles= " + c.toString());
 	}
 
 	public Cliente getClienteById(long id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
-		logger.info("Cliente hallado exitosamente, Detalles=" + c.toString());
+		LOGGER.info("Cliente hallado exitosamente, Detalles=" + c.toString());
 		return c;
 	}
 
