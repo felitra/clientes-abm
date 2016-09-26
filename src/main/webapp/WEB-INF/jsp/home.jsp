@@ -21,8 +21,8 @@
   		</script>
 
 		<script type="text/javascript">	
-	  		function confirmDelete(id){
-				var x = confirm("Esta seguro que desea borrar al cliente?");
+	  		function confirmDelete(id, nombre, apellido){
+				var x = confirm("Esta seguro que desea borrar al cliente: " + nombre + ", " + apellido + "?");
 				if (x){
 				    var form = document.createElement("form");
 				    form.setAttribute("method", 'post');
@@ -69,7 +69,7 @@
 		    					<td>${Cliente.establecimiento}</td>
 		    					<td>
 		    						<button class="btn btn-primary" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
-				  					<button class="btn btn-danger" onclick="confirmDelete(${Cliente.id})">Eliminar</button>
+				  					<button class="btn btn-danger" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombre}', '${Cliente.apellido}')">Eliminar</button>
                             	</td>
                             </tr>
 		    			</c:forEach>
