@@ -3,6 +3,7 @@
  */
 package com.fra.clientes.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import com.fra.clientes.services.ClienteService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/spring-clientes-abm.xml"})
+@Ignore
 public class TestApp {
 
 	@Autowired
