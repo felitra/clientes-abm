@@ -21,8 +21,8 @@
   		</script>
 
 		<script type="text/javascript">	
-	  		function confirmDelete(id, nombre, apellido){
-				var x = confirm("Esta seguro que desea borrar al cliente: " + nombre + ", " + apellido + "?");
+	  		function confirmDelete(id, nombreApellido){
+				var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
 				if (x){
 				    var form = document.createElement("form");
 				    form.setAttribute("method", 'post');
@@ -51,8 +51,7 @@
 				<table class="table table-bordered" class="display" id="clientes">
 					<thead>
 						<tr>
-	        			<th>Nombre</th>
-	        			<th>Apellido</th>
+	        			<th>Nombre y Apellido</th>
 	       				<th>Telefono</th>
 	      				<th>Direccion</th>
 	      				<th>Establecimiento</th>
@@ -62,14 +61,15 @@
 	    			<tbody>
 		    			<c:forEach var="Cliente" items="${Lista}">
 		    				<tr>
-		    					<td>${Cliente.nombre}</td>
-		    					<td>${Cliente.apellido}</td>
+		    					<td>${Cliente.nombreApellido}</td>
 		    					<td>${Cliente.telefono}</td>
 		    					<td>${Cliente.direccion}</td>
 		    					<td>${Cliente.establecimiento}</td>
 		    					<td>
 		    						<button class="btn btn-primary" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
-				  					<button class="btn btn-danger" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombre}', '${Cliente.apellido}')">Eliminar</button>
+		    						<br>
+		    						<br>
+				  					<button class="btn btn-danger" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombreApellido}')">Eliminar</button>
                             	</td>
                             </tr>
 		    			</c:forEach>

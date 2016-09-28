@@ -39,13 +39,13 @@ public class ClientesController {
 	@RequestMapping(value = "/Agregar Cliente", method = RequestMethod.POST)
 	public String addCliente(HttpServletRequest request, HttpServletResponse response) {
 
-		String nombre = request.getParameter("nombre");
-		String apellido = request.getParameter("apellido");
+		String nombreApellido = request.getParameter("nombreApellido");
+//		String apellido = request.getParameter("apellido");
 		String direccion = request.getParameter("direccion");
 		String telefono = request.getParameter("telefono");
 		String establecimiento = request.getParameter("establecimiento");
 		
-		Cliente cliente = new Cliente(nombre,apellido,telefono,direccion,establecimiento);
+		Cliente cliente = new Cliente(nombreApellido,telefono,direccion,establecimiento);
 		
 		clienteService.addCliente(cliente);
 		
@@ -66,13 +66,13 @@ public class ClientesController {
 	public String editCliente(HttpServletRequest request, HttpServletResponse response) {
 
 		long id = Long.valueOf(request.getParameter("id"));
-		String nombre = request.getParameter("nombre");
-		String apellido = request.getParameter("apellido");
+		String nombreApellido = request.getParameter("nombreApellido");
+//		String apellido = request.getParameter("apellido");
 		String direccion = request.getParameter("direccion");
 		String telefono = request.getParameter("telefono");
 		String establecimiento = request.getParameter("establecimiento");
 		
-		Cliente cliente = new Cliente(nombre,apellido,telefono,direccion,establecimiento);
+		Cliente cliente = new Cliente(nombreApellido,telefono,direccion,establecimiento);
 		cliente.setId(id);
 		
 		clienteService.updateCliente(cliente);

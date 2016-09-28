@@ -19,11 +19,8 @@
 						<label for="usr">ID:</label>
 		  				<input type="text" class="form-control" name="id" value= "${Cliente.id}" readonly="readonly">
 		  				<br>
-		  				<label for="usr">Nombre:</label>
-		  				<input type="text" class="form-control" name="nombre" value= "${Cliente.nombre}">
-		  				<br>
-		  				<label for="usr">Apellido:</label>
-		  				<input type="text" class="form-control" name="apellido" value= "${Cliente.apellido}">
+		  				<label for="usr">Nombre y Apellido:</label>
+		  				<input type="text" class="form-control" name="nombreApellido" value= "${Cliente.nombreApellido}">
 		  				<br>
 		  				<label for="usr">Telefono:</label>
 		  				<input type="text" class="form-control" name="telefono" value= "${Cliente.telefono}">
