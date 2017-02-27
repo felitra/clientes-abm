@@ -16,11 +16,8 @@
 			<div class="container">
 				<form:form method="POST" action="/clientes-abm/Agregar Cliente">
 					<div class="form-group">
-		  				<label for="usr">Nombre:</label>
-		  				<input type="text" class="form-control" name="nombre">
-		  				<br>
-		  				<label for="usr">Apellido:</label>
-		  				<input type="text" class="form-control" name="apellido">
+		  				<label for="usr">Nombre y Apellido:</label>
+		  				<input type="text" class="form-control" name="nombreApellido">
 		  				<br>
 		  				<label for="usr">Telefono:</label>
 		  				<input type="text" class="form-control" name="telefono">

@@ -9,9 +9,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+				
   		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
   		<script type="text/javascript">	
@@ -21,8 +23,8 @@
   		</script>
 
 		<script type="text/javascript">	
-	  		function confirmDelete(id, nombre, apellido){
-				var x = confirm("Esta seguro que desea borrar al cliente: " + nombre + ", " + apellido + "?");
+	  		function confirmDelete(id, nombreApellido){
+				var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
 				if (x){
 				    var form = document.createElement("form");
 				    form.setAttribute("method", 'post');
@@ -51,8 +53,7 @@
 				<table class="table table-bordered" class="display" id="clientes">
 					<thead>
 						<tr>
-	        			<th>Nombre</th>
-	        			<th>Apellido</th>
+	        			<th>Nombre y Apellido</th>
 	       				<th>Telefono</th>
 	      				<th>Direccion</th>
 	      				<th>Establecimiento</th>
@@ -62,14 +63,15 @@
 	    			<tbody>
 		    			<c:forEach var="Cliente" items="${Lista}">
 		    				<tr>
-		    					<td>${Cliente.nombre}</td>
-		    					<td>${Cliente.apellido}</td>
+		    					<td>${Cliente.nombreApellido}</td>
 		    					<td>${Cliente.telefono}</td>
 		    					<td>${Cliente.direccion}</td>
 		    					<td>${Cliente.establecimiento}</td>
 		    					<td>
-		    						<button class="btn btn-primary" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
-				  					<button class="btn btn-danger" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombre}', '${Cliente.apellido}')">Eliminar</button>
+		    						<button class="btn btn-primary" style="width: 3cm;" id="editar" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
+		    						<br>
+		    						<br>
+				  					<button class="btn btn-danger" style="width: 3cm;" id="borrar" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombreApellido}')">Eliminar</button>
                             	</td>
                             </tr>
 		    			</c:forEach>

@@ -13,9 +13,7 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String nombre;
-	
-	private String apellido;
+	private String nombreApellido;
 	
 	private String telefono;
 
@@ -27,9 +25,8 @@ public class Cliente {
 		
 	}
 	
-	public Cliente(String nombre, String apellido, String telefono, String direccion, String establecimiento){
-		this.nombre=nombre;
-		this.apellido=apellido;
+	public Cliente(String nombreApellido, String telefono, String direccion, String establecimiento){
+		this.nombreApellido=nombreApellido;
 		this.telefono=telefono;
 		this.direccion=direccion;
 		this.establecimiento=establecimiento;
@@ -43,20 +40,12 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreApellido() {
+		return nombreApellido;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setNombreApellido(String nombreApellido) {
+		this.nombreApellido = nombreApellido;
 	}
 
 	public String getTelefono() {
@@ -85,7 +74,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return String.format("Cliente: %s %s con telefono: %s y direccion: %s", nombre, apellido, telefono, direccion);
+		return String.format("Cliente: %s con telefono: %s y direccion: %s", nombreApellido, telefono, direccion);
 	}
 
 }

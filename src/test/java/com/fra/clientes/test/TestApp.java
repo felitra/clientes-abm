@@ -30,8 +30,7 @@ public class TestApp {
 	
 		Cliente cliente = new Cliente();
 		
-		cliente.setNombre("Renzo");
-		cliente.setApellido("Felitti");
+		cliente.setNombreApellido("Renzo");
 		cliente.setTelefono("46025719");
 		cliente.setDireccion("Corvalan 2626");
 		cliente.setEstablecimiento("Casa");		
