@@ -6,7 +6,7 @@
 	<groupId>com.fra.clientes</groupId>
 	<artifactId>clientes-abm</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>clientes-abm Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
