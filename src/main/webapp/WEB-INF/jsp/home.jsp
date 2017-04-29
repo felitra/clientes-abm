@@ -38,7 +38,7 @@
   		</script>
 
 </head>
-	<body>
+	<body style="background-color:menu; ">
 		<div class="container-fluid">
 		<h1 align="center">Lista de clientes de Eduardo Felitti</h1>
 			<div class="container">
@@ -63,11 +63,11 @@
 	    			<tbody>
 		    			<c:forEach var="Cliente" items="${Lista}">
 		    				<tr>
-		    					<td>${Cliente.nombreApellido}</td>
-		    					<td>${Cliente.telefono}</td>
-		    					<td>${Cliente.direccion}</td>
-		    					<td>${Cliente.establecimiento}</td>
-		    					<td>
+		    					<td align="center">${Cliente.nombreApellido}</td>
+		    					<td align="center">${Cliente.telefono}</td>
+		    					<td align="center">${Cliente.direccion}</td>
+		    					<td align="center">${Cliente.establecimiento}</td>
+		    					<td align="center">
 		    						<button class="btn btn-primary" style="width: 3cm;" id="editar" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
 		    						<br>
 		    						<br>
@@ -79,6 +79,6 @@
 	  			</table>
 			</div>
 		</div>
-	</body>
+	</body>	
 </html>
 
