@@ -37,12 +37,4 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteDao.getClientes();
 	}
 
-	public void setClienteDao(ClienteDao clienteDao) {
-		this.clienteDao = clienteDao;
-	}
-
-	public ClienteDao getClienteDao() {
-		return clienteDao;
-	}
-
 }

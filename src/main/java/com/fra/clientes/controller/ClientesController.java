@@ -88,7 +88,4 @@ public class ClientesController {
 		return "redirect:/home";
 	}
 
-	public void setClienteService(ClienteService cs) {
-		this.clienteService = cs;
-	}
 }
