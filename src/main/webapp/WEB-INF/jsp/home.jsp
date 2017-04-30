@@ -57,8 +57,10 @@
 
 </head>
 	<body style="background-color:menu; ">
+		<div class="upcon">
+	    	<img src="http://s2.subirimagenes.com/privadas/previo/thump_2404224sistema-de-clientes.jpg" style="width:100%" />
+		</div>
 		<div class="container-fluid">
-		<h1 align="center">Lista de clientes de Eduardo Felitti</h1>
 			<div class="container">
 				<br>
 				<br>
