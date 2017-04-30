@@ -17,9 +17,20 @@
   		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
   		<script type="text/javascript">	
-  			$(document).ready( function () {
-    			$('#clientes').DataTable();
-			} );		
+  			$(document).ready(function() {
+  		        $('#clientes').dataTable( {
+  		            language: {
+  		                search: "Buscar cliente:",
+  		              	emptyTable: "No hay clientes",
+  			            paginate: {
+	  		                previous:   "Previo",
+	  		                next:       "Siguiente"
+  		            	},
+  		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
+  		            	lengthMenu: "Mostrar _MENU_ resultados"
+  		            }
+  		        } );
+  		    } );
   		</script>
 
 		<script type="text/javascript">	
@@ -54,10 +65,10 @@
 					<thead>
 						<tr>
 	        			<th>Nombre y Apellido</th>
-	       				<th>Telefono</th>
-	      				<th>Direccion</th>
+	       				<th>Teléfono</th>
+	      				<th>Dirección</th>
 	      				<th>Establecimiento</th>
-	      				<th>Accion</th>	      				
+	      				<th>Acción</th>	      				
 	      				</tr>
 	    			</thead>
 	    			<tbody>
