@@ -32,6 +32,13 @@
   		        } );
   		    } );
   		</script>
+  		
+  		<script type="text/javascript">
+  		$(document).ready(function()
+		{
+		  $("tr:even").css("background-color", "#e6e6e6");
+		});
+  		</script>
 
 		<script type="text/javascript">	
 	  		function confirmDelete(id, nombreApellido){
