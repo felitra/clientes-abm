@@ -33,13 +33,6 @@
   		    } );
   		</script>
   		
-  		<script type="text/javascript">
-  		$(document).ready(function()
-		{
-		  $("tr:even").css("background-color", "#e6e6e6");
-		});
-  		</script>
-
 		<script type="text/javascript">	
 	  		function confirmDelete(id, nombreApellido){
 				var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
@@ -58,7 +51,8 @@
 </head>
 	<body style="background-color:menu; ">
 		<div class="upcon">
-	    	<img src="http://s2.subirimagenes.com/privadas/previo/thump_2404224sistema-de-clientes.jpg" style="width:100%" />
+<!-- 	    	<img src="http://s2.subirimagenes.com/privadas/previo/thump_2404224sistema-de-clientes.jpg" style="width:100%" /> -->
+	    	<img src="/clientes-abm/resources/img/home-header.jpg" />
 		</div>
 		<div class="container-fluid">
 			<div class="container">
@@ -70,7 +64,7 @@
 				<button name="button" class="btn btn-default" onclick="location.href='${addUrl}'">Agregar Cliente</button>
 				<br>
 				<br>
-				<table class="table table-bordered" class="display" id="clientes">
+				<table  class="display compact cell-border" id="clientes">
 					<thead>
 						<tr>
 	        			<th>Nombre y Apellido</th>
