@@ -12,12 +12,13 @@
 		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-				
-  		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-
-  		<script type="text/javascript">	
-  			$(document).ready(function() {
+  		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>		
+	
+  		<script type="text/javascript" class="init">	
+	  		$(document).ready(function() {
+//   			https://editor.datatables.net/examples/simple/multiRow.html
+// 				view-source:https://editor.datatables.net/examples/simple/multiRow.html
+  			
   		        $('#clientes').dataTable( {
   		            language: {
   		                search: "Buscar cliente:",
@@ -52,7 +53,7 @@
 	<body style="background-color:menu; ">
 		<div class="upcon">
 <!-- 	    	<img src="http://s2.subirimagenes.com/privadas/previo/thump_2404224sistema-de-clientes.jpg" style="width:100%" /> -->
-	    	<img src="/clientes-abm/resources/img/home-header.jpg" />
+	    	<img src="/clientes-abm/resources/img/home-header.jpg" style="width:100%"/>
 		</div>
 		<div class="container-fluid">
 			<div class="container">
