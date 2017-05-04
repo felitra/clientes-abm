@@ -56,7 +56,7 @@
 	<body style="background-color:menu; ">
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
-		<spring:url  var="homeHeader" value="/resources/img/home-header.jpg"/>
+		<spring:url  var="homeHeader" value="/resources/images/home-header.jpg"/>
 		<spring:url value="/Agregar Cliente" var="addUrl" />
 		<spring:url value="/Editar Cliente/" var="editUrl" />
 				
