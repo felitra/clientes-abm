@@ -8,17 +8,20 @@
 		<title>Home</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+		
+		<spring:url var="bootstrapCss" value="/resources/css/bootstrap.min.css"/>
+		<spring:url var="dataTablesCss" value="/resources/css/jquery.dataTables.css"/>
+		<spring:url var="jqueryMinJs" value="/resources/js/jquery.min.js"/>
+		<spring:url var="dataTablesJs" value="/resources/js/jquery.dataTables.js"/>
+				
+		<link rel="stylesheet" href="${bootstrapCss}">
+		<link rel="stylesheet" type="text/css" href="${dataTablesCss}">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>		
+		<script src="${jqueryMinJs}"></script>
+  		<script type="text/javascript" charset="utf8" src="${dataTablesJs}"></script>		
 	
   		<script type="text/javascript" class="init">	
-	  		$(document).ready(function() {
-//   			https://editor.datatables.net/examples/simple/multiRow.html
-// 				view-source:https://editor.datatables.net/examples/simple/multiRow.html
-  			
+	  		$(document).ready(function() {  			
   		        $('#clientes').dataTable( {
   		            language: {
   		                search: "Buscar cliente:",
@@ -51,17 +54,19 @@
 
 </head>
 	<body style="background-color:menu; ">
+		
+<%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
+		<spring:url  var="homeHeader" value="/resources/img/home-header.jpg"/>
+		<spring:url value="/Agregar Cliente" var="addUrl" />
+		<spring:url value="/Editar Cliente/" var="editUrl" />
+				
 		<div class="upcon">
-<!-- 	    	<img src="http://s2.subirimagenes.com/privadas/previo/thump_2404224sistema-de-clientes.jpg" style="width:100%" /> -->
-	    	<img src="/clientes-abm/resources/img/home-header.jpg" style="width:100%"/>
+	    	<img src="${homeHeader}" style="width:100%"/>
 		</div>
 		<div class="container-fluid">
 			<div class="container">
 				<br>
-				<br>
-				<spring:url value="/Agregar Cliente" var="addUrl" />
-				<spring:url value="/Editar Cliente/" var="editUrl" />
-				
+				<br>		
 				<button name="button" class="btn btn-default" onclick="location.href='${addUrl}'">Agregar Cliente</button>
 				<br>
 				<br>
