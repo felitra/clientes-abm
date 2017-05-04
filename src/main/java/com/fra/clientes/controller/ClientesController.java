@@ -2,8 +2,9 @@ package com.fra.clientes.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,26 +22,57 @@ public class ClientesController {
 	@Autowired
 	private ClienteService clienteService;
 
+	/**
+	 * SPRING MVC
+	 * 
+	 */
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
-	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView home() {
 		
-		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("Lista", clienteService.getClientes());
+		//TODO: MANEJO LA RESPUESTA DE JSON
+		List<Cliente> clientes = cliente();
+		
+		ModelAndView modelAndView = new ModelAndView("Home");
+		modelAndView.addObject("Lista", clientes);
 		
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = "/Agregar Cliente" , method = RequestMethod.GET)
-	public ModelAndView redirectNewCliente(HttpServletRequest request, HttpServletResponse response) {
+
+	@RequestMapping(value = "/cliente/form/add" , method = RequestMethod.GET)
+	public ModelAndView formAddCliente() {
 		ModelAndView modelAndView = new ModelAndView("NewCliente");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/cliente/{id}/form/update" , method = RequestMethod.GET)
+	public ModelAndView formUpdateCliente(@PathVariable("id") long id) {
+		
+		Cliente cliente = clienteService.getClienteById(id);
+		ModelAndView modelAndView = new ModelAndView("EditCliente");
+		modelAndView.addObject("Cliente", cliente);
+		
 		return modelAndView;
 	}	
 
-	@RequestMapping(value = "/Agregar Cliente", method = RequestMethod.POST)
-	public String addCliente(HttpServletRequest request, HttpServletResponse response) {
 
+	/**
+	 * REST API
+	 * 
+	 */
+	
+	@RequestMapping(value = "/cliente" , method = RequestMethod.GET)
+	public List<Cliente> cliente() {
+		//TODO: DEVOLVER UN JSON
+		return clienteService.getClientes();
+	}
+	
+
+	@RequestMapping(value = "/cliente", method = RequestMethod.POST)
+	public String saveOrUpdate(HttpServletRequest request) {
+
+		//TODO: RECIBIR UN JSON
+		
 		String nombreApellido = request.getParameter("nombreApellido");
-//		String apellido = request.getParameter("apellido");
 		String direccion = request.getParameter("direccion");
 		String telefono = request.getParameter("telefono");
 		String establecimiento = request.getParameter("establecimiento");
@@ -51,20 +83,12 @@ public class ClientesController {
 		
 		return "redirect:home";
 	}
-	
-	@RequestMapping(value = "/Editar Cliente/{id}" , method = RequestMethod.GET)
-	public ModelAndView redirectEdit(@PathVariable("id") long id , HttpServletRequest request, HttpServletResponse response) {
 		
-		Cliente cliente = clienteService.getClienteById(id);
-		ModelAndView modelAndView = new ModelAndView("EditCliente");
-		modelAndView.addObject("Cliente", cliente);
-		
-		return modelAndView;
-	}	
-	
 	@RequestMapping(value = "/Editar Cliente", method = RequestMethod.POST)
-	public String editCliente(HttpServletRequest request, HttpServletResponse response) {
+	public String editCliente(HttpServletRequest request) {
 
+		//TODO: USAR EL SAVE OR UPDATE, BORRAR ESTE METODO
+		
 		long id = Long.valueOf(request.getParameter("id"));
 		String nombreApellido = request.getParameter("nombreApellido");
 //		String apellido = request.getParameter("apellido");
@@ -81,9 +105,10 @@ public class ClientesController {
 	}	
 	
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/cliente/{id}/delete", method = RequestMethod.POST)
 	public String deleteCliente(@PathVariable("id") long id) {
 		
+		//TODO: SOLO RETORNAR STATUS CODE
 		this.clienteService.deleteClienteById(id);
 		return "redirect:/home";
 	}
