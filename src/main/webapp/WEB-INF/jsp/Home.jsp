@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
@@ -54,7 +54,8 @@
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
 		<spring:url value="/app/cliente" var="baseUrl" />
-				
+		<spring:url value="/rest/cliente" var="restBaseUrl" />
+							
 		<div class="upcon">
 	    	<img src="${resources}/images/home-header.jpg" style="width:100%"/>
 		</div>
