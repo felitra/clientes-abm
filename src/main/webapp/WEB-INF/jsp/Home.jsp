@@ -9,16 +9,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<spring:url var="bootstrapCss" value="/resources/css/bootstrap.min.css"/>
-		<spring:url var="dataTablesCss" value="/resources/css/jquery.dataTables.css"/>
-		<spring:url var="jqueryMinJs" value="/resources/js/jquery.min.js"/>
-		<spring:url var="dataTablesJs" value="/resources/js/jquery.dataTables.js"/>
-				
-		<link rel="stylesheet" href="${bootstrapCss}">
-		<link rel="stylesheet" type="text/css" href="${dataTablesCss}">
+		<spring:url var="resources" value="/resources"/>		
+						
+		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">		
+		<link rel="stylesheet" href="${resources}/css/jquery.dataTables.css" type="text/css">
 
-		<script src="${jqueryMinJs}"></script>
-  		<script type="text/javascript" charset="utf8" src="${dataTablesJs}"></script>		
+		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
+  		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
 	
   		<script type="text/javascript" class="init">	
 	  		$(document).ready(function() {  			
@@ -56,18 +53,16 @@
 	<body style="background-color:menu; ">
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
-		<spring:url  var="homeHeader" value="/resources/images/home-header.jpg"/>
-		<spring:url value="/Agregar Cliente" var="addUrl" />
-		<spring:url value="/Editar Cliente/" var="editUrl" />
+		<spring:url value="/cliente" var="baseUrl" />
 				
 		<div class="upcon">
-	    	<img src="${homeHeader}" style="width:100%"/>
+	    	<img src="${resources}/images/home-header.jpg" style="width:100%"/>
 		</div>
 		<div class="container-fluid">
 			<div class="container">
 				<br>
 				<br>		
-				<button name="button" class="btn btn-default" onclick="location.href='${addUrl}'">Agregar Cliente</button>
+				<button name="button" class="btn btn-default" onclick="location.href='${baseUrl}'/form/add">Agregar Cliente</button>
 				<br>
 				<br>
 				<table  class="display compact cell-border" id="clientes">
@@ -88,7 +83,7 @@
 		    					<td align="center">${Cliente.direccion}</td>
 		    					<td align="center">${Cliente.establecimiento}</td>
 		    					<td align="center">
-		    						<button class="btn btn-primary" style="width: 3cm;" id="editar" onclick="location.href='${editUrl}${Cliente.id}'">Editar</button>
+		    						<button class="btn btn-primary" style="width: 3cm;" id="editar" onclick="location.href='${baseUrl}/${Cliente.id}/form/update'">Editar</button>
 		    						<br>
 		    						<br>
 				  					<button class="btn btn-danger" style="width: 3cm;" id="borrar" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombreApellido}')">Eliminar</button>
