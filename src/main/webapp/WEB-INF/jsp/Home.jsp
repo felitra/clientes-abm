@@ -53,7 +53,7 @@
 	<body style="background-color:menu; ">
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
-		<spring:url value="/cliente" var="baseUrl" />
+		<spring:url value="/app/cliente" var="baseUrl" />
 				
 		<div class="upcon">
 	    	<img src="${resources}/images/home-header.jpg" style="width:100%"/>

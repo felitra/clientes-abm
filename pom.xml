@@ -19,6 +19,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<mysql.driver.version>5.1.38</mysql.driver.version>
+		<jackson.version>2.2.3</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -119,6 +120,25 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.driver.version}</version>
+		</dependency>
+
+		<!-- Jackson -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>${jackson.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -14,6 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
 
+/**
+ * Web controller para manejar la aplicación
+ * 
+ * /home GET Listing, muestra todos los clientes 
+ * /cliente/form/add GET Listing, muestra el form para creacion de clientes
+ * /cliente/{id}/form/update GET Listing, muestra el form para update del cliente {id}
+ * 
+ * @author renzo.ariel.felitti
+ *
+ */
+
 @Controller("webController")
 public class ClientesController {
 
