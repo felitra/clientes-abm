@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
+import com.fra.clientes.services.exceptions.ClienteNotFoundException;
 
 /**
  * Web controller para manejar la aplicación
@@ -36,7 +37,7 @@ public class ClientesController {
 	
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
 	public ModelAndView home() {
-		List<Cliente> clientes = clientesController.cliente();
+		List<Cliente> clientes = clientesController.getClientes();
 		
 		ModelAndView modelAndView = new ModelAndView("Home");
 		modelAndView.addObject("Lista", clientes);
@@ -51,7 +52,7 @@ public class ClientesController {
 	}
 	
 	@RequestMapping(value = "/cliente/{id}/form/update" , method = RequestMethod.GET)
-	public ModelAndView formUpdateCliente(@PathVariable("id") long id) {
+	public ModelAndView formUpdateCliente(@PathVariable("id") long id) throws ClienteNotFoundException {
 		Cliente cliente = clienteService.getClienteById(id);
 		ModelAndView modelAndView = new ModelAndView("EditCliente");
 		modelAndView.addObject("Cliente", cliente);

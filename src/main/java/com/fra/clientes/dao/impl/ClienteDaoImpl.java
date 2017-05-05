@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fra.clientes.dao.ClienteDao;
 import com.fra.clientes.models.Cliente;
+import com.fra.clientes.services.exceptions.ClienteNotFoundException;
 
 @Repository
 public class ClienteDaoImpl implements ClienteDao {
@@ -25,24 +26,39 @@ public class ClienteDaoImpl implements ClienteDao {
 		LOGGER.info("Cliente almacenado exitosamente, Detalles= " + c.toString());
 	}
 
-	public void updateCliente(Cliente c) {
+	public void updateCliente(Cliente c) throws ClienteNotFoundException {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(c);
-		LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());
+		if (session.get(Cliente.class, c.getId()) == null) {
+			LOGGER.error(String.format("Cliente %d no encontrado", c.getId()));
+			throw new ClienteNotFoundException();
+		} else {
+			session.update(c);
+			LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());	
+		}		
 	}
 
-	public void deleteClienteById(long id) {
+	public void deleteClienteById(long id) throws ClienteNotFoundException {
 		Session session = this.sessionFactory.getCurrentSession();
-		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
-		if (null != c) {
+		Cliente c = (Cliente) session.get(Cliente.class, new Long(id));
+		if (c == null) {
+			LOGGER.error(String.format("Cliente %d no encontrado", id));
+			throw new ClienteNotFoundException();			
+		} else {
 			session.delete(c);
+			LOGGER.info("Cliente borrado exitosamente, Detalles= " + c.toString());
 		}
-		LOGGER.info("Cliente borrado exitosamente, Detalles= " + c.toString());
 	}
 
-	public Cliente getClienteById(long id) {
+	public Cliente getClienteById(long id) throws ClienteNotFoundException {
 		Session session = this.sessionFactory.getCurrentSession();
-		Cliente c = (Cliente) session.load(Cliente.class, new Long(id));
+		Cliente c = (Cliente) session.get(Cliente.class, new Long(id));
+		if (c == null) {
+			LOGGER.error(String.format("Cliente %d no encontrado", id));
+			throw new ClienteNotFoundException();
+		} else {
+			session.update(c);
+			LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());	
+		}
 		LOGGER.info("Cliente hallado exitosamente, Detalles=" + c.toString());
 		return c;
 	}
