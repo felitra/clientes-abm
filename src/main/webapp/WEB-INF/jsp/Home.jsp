@@ -62,7 +62,7 @@
 			<div class="container">
 				<br>
 				<br>		
-				<button name="button" class="btn btn-default" onclick="location.href='${baseUrl}'/form/add">Agregar Cliente</button>
+				<button name="button" class="btn btn-default" onclick="location.href='${baseUrl}/form/add'">Agregar Cliente</button>
 				<br>
 				<br>
 				<table  class="display compact cell-border" id="clientes">

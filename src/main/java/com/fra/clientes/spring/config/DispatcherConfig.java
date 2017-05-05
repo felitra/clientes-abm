@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("com.fra.clientes.controller")
+@ComponentScan("com.fra.clientes.mvc.controller")
 @EnableWebMvc
 public class DispatcherConfig extends WebMvcConfigurerAdapter{
 

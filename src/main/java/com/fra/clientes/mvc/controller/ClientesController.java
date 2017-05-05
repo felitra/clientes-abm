@@ -1,4 +1,4 @@
-package com.fra.clientes.controller.mvc;
+package com.fra.clientes.mvc.controller;
 
 
 
@@ -14,19 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
 
-@Controller
+@Controller("webController")
 public class ClientesController {
 
 	@Autowired
 	private ClienteService clienteService;
 
 	@Autowired
-	private com.fra.clientes.controller.rest.ClientesController clientesController;
+	private com.fra.clientes.rest.controller.ClientesController clientesController;
 	
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
 	public ModelAndView home() {
-		
-		//TODO: MANEJO LA RESPUESTA DE JSON
 		List<Cliente> clientes = clientesController.cliente();
 		
 		ModelAndView modelAndView = new ModelAndView("Home");
@@ -43,7 +41,6 @@ public class ClientesController {
 	
 	@RequestMapping(value = "/cliente/{id}/form/update" , method = RequestMethod.GET)
 	public ModelAndView formUpdateCliente(@PathVariable("id") long id) {
-		
 		Cliente cliente = clienteService.getClienteById(id);
 		ModelAndView modelAndView = new ModelAndView("EditCliente");
 		modelAndView.addObject("Cliente", cliente);
