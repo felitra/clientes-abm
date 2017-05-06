@@ -23,6 +23,7 @@
   		            language: {
   		                search: "Buscar cliente:",
   		              	emptyTable: "No hay clientes",
+  		              	zeroRecords: "Ningún cliente encontrado",
   			            paginate: {
 	  		                previous:   "Previo",
 	  		                next:       "Siguiente"
