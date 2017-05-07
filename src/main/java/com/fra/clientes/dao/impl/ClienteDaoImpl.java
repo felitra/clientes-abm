@@ -32,7 +32,7 @@ public class ClienteDaoImpl implements ClienteDao {
 			LOGGER.error(String.format("Cliente %d no encontrado", c.getId()));
 			throw new ClienteNotFoundException();
 		} else {
-			session.update(c);
+			session.merge(c);
 			LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());	
 		}		
 	}
@@ -56,11 +56,9 @@ public class ClienteDaoImpl implements ClienteDao {
 			LOGGER.error(String.format("Cliente %d no encontrado", id));
 			throw new ClienteNotFoundException();
 		} else {
-			session.update(c);
-			LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());	
+			LOGGER.info("Cliente hallado exitosamente, Detalles=" + c.toString());
+			return c;
 		}
-		LOGGER.info("Cliente hallado exitosamente, Detalles=" + c.toString());
-		return c;
 	}
 
 	@SuppressWarnings("unchecked")

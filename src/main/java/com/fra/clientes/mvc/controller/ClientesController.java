@@ -47,14 +47,14 @@ public class ClientesController {
 
 	@RequestMapping(value = "/cliente/form/add" , method = RequestMethod.GET)
 	public ModelAndView formAddCliente() {
-		ModelAndView modelAndView = new ModelAndView("NewCliente");
+		ModelAndView modelAndView = new ModelAndView("DetalleCliente");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/cliente/{id}/form/update" , method = RequestMethod.GET)
 	public ModelAndView formUpdateCliente(@PathVariable("id") long id) throws ClienteNotFoundException {
 		Cliente cliente = clienteService.getClienteById(id);
-		ModelAndView modelAndView = new ModelAndView("EditCliente");
+		ModelAndView modelAndView = new ModelAndView("DetalleCliente");
 		modelAndView.addObject("Cliente", cliente);
 		
 		return modelAndView;
