@@ -71,7 +71,9 @@
 				        	establecimiento: est
 						}),
 			    	    'dataType': 'json',
-			    	    'success': alert( "Cliente actualizado exitosamente!" )
+			    	    'success': alert( "Cliente actualizado exitosamente!" ),
+			    	    'error': alert("Error actualizando cliente, intente mas tarde")
+			    	     
 			    	    });
 			    });
 			    
@@ -83,8 +85,7 @@
 			    });
 			    
 			    $('#banner').click(function(event){
-			    	var url = '${baseUrl}';
-			    	window.location.replace(url);
+			    	window.location.replace('${baseUrl}');
 			    });
 			    
 			    setupPage();

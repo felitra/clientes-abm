@@ -36,24 +36,31 @@
   		        } );
   		        
   		      	$('#banner').click(function(event) {
-	  	  			var url = '${baseUrl}';
-	  	  			window.location.replace(url);
-  	  			});
-  		        
-  		    } );
+	  	  			window.location.replace('${baseUrl}');
+  	  			}); 		        
+  		    });
 	  		
 	  		function confirmDelete(id, nombreApellido){
 				var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
 				if (x){
-				    var form = document.createElement("form");
-				    form.setAttribute("method", 'post');
-		  		    form.setAttribute("action", 'delete/' + id);
-		  		  	form.submit();
+					
+					var url = '${restBaseUrl}/';
+					url += id;
+					
+					return jQuery.ajax({
+			    	    'type': 'DELETE',
+			    	    'url': url,
+			    	    'success':  function(XMLHttpRequest, textStatus, errorThrown) {
+			    	    	alert( "Cliente borrado exitosamente!" );
+			  	  			window.location.replace('${baseUrl}');
+			    	    	}
+			    	    });
+					
 			    	return true;
 				} else {
 			    	return false;
 	  			}
-			}	  		
+			}
   		</script>
 
 </head>
