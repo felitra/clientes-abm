@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fra.clientes.dao.ClienteDao;
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
+import com.fra.clientes.services.exceptions.ClienteNotFoundException;
 
 @Service
 @Transactional
@@ -21,28 +22,20 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteDao.addCliente(c);
 	}
 
-	public void updateCliente(Cliente c) {
+	public void updateCliente(Cliente c) throws ClienteNotFoundException {
 		clienteDao.updateCliente(c);
 	}
 
-	public void deleteClienteById(long id) {
+	public void deleteClienteById(long id) throws ClienteNotFoundException {
 		clienteDao.deleteClienteById(id);
 	}
 
-	public Cliente getClienteById(long id) {
+	public Cliente getClienteById(long id) throws ClienteNotFoundException {
 		return clienteDao.getClienteById(id);
 	}
 
 	public List<Cliente> getClientes() {
 		return clienteDao.getClientes();
-	}
-
-	public void setClienteDao(ClienteDao clienteDao) {
-		this.clienteDao = clienteDao;
-	}
-
-	public ClienteDao getClienteDao() {
-		return clienteDao;
 	}
 
 }
