@@ -42,7 +42,12 @@
 				        	establecimiento: est
 						}),
 			    	    'dataType': 'json',
-			    	    'success': alert( "Cliente creado exitosamente!" )
+			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
+			    	    		alert( "Cliente creado exitosamente!" )
+			    	    	},
+			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
+				    	    	alert( "Error creando cliente, intente mas tarde" );
+			    	    	}
 			    	    });
 			    });
 			    
@@ -71,9 +76,12 @@
 				        	establecimiento: est
 						}),
 			    	    'dataType': 'json',
-			    	    'success': alert( "Cliente actualizado exitosamente!" ),
-			    	    'error': alert("Error actualizando cliente, intente mas tarde")
-			    	     
+			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
+			    	    		alert( "Cliente actualizado exitosamente!" )
+			    	    	},
+			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
+			    	    		alert("Error actualizando cliente, intente mas tarde")
+		    	    		}
 			    	    });
 			    });
 			    

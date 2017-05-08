@@ -51,8 +51,11 @@
 			    	    'type': 'DELETE',
 			    	    'url': url,
 			    	    'success':  function(XMLHttpRequest, textStatus, errorThrown) {
-			    	    	alert( "Cliente borrado exitosamente!" );
-			  	  			window.location.replace('${baseUrl}');
+				    	    	alert( "Cliente borrado exitosamente!" );
+				  	  			window.location.replace('${baseUrl}');
+			    	    	},
+			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
+				    	    	alert( "Error borrando cliente, intente mas tarde" );
 			    	    	}
 			    	    });
 					
