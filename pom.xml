@@ -19,6 +19,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<mysql.driver.version>5.1.38</mysql.driver.version>
+		<jackson.version>2.2.3</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -121,6 +122,25 @@
 			<version>${mysql.driver.version}</version>
 		</dependency>
 
+		<!-- Jackson -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -128,12 +148,19 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
+					<artifactId>maven-war-plugin</artifactId>
 					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>	
 						<source>1.8</source>
 						<target>1.8</target>
 					</configuration>
-				</plugin>
+				</plugin>				
 			</plugins>
 		</pluginManagement>
 		<finalName>clientes-abm</finalName>

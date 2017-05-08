@@ -35,11 +35,20 @@ public class WebInitializer implements WebApplicationInitializer{
 		// Create the dispatcher servlet's Spring application context
 		AnnotationConfigWebApplicationContext dispatcherContext = new AnnotationConfigWebApplicationContext();
 		dispatcherContext.register(DispatcherConfig.class);
-
-		// Register and map the dispatcher servlet
+		
+		// Register and map the Dispatcher servlet
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
 		dispatcher.setLoadOnStartup(1);
-		dispatcher.addMapping("/");
+		dispatcher.addMapping("/app/*");
 		
+		
+		// Create the rest servlet's Spring application context
+		AnnotationConfigWebApplicationContext restContext = new AnnotationConfigWebApplicationContext();
+		restContext.register(RestConfig.class);
+		
+		// Register and map the Rest servlet
+		ServletRegistration.Dynamic restDispatcher = container.addServlet("restDispatcher", new DispatcherServlet(restContext));
+		restDispatcher.setLoadOnStartup(1);
+		restDispatcher.addMapping("/rest/*");
 	}
 }

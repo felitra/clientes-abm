@@ -14,31 +14,33 @@ import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
 
 /**
+ * TODO: RE-DO Junit Tests
+ * 
  * @author Renzo
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/spring-clientes-abm.xml"})
-@Ignore
-public class TestApp {
-
-	@Autowired
-	ClienteService clienteService;
-	
-	@Test
-	public void testApp(){
-	
-		Cliente cliente = new Cliente();
-		
-		cliente.setNombreApellido("Renzo");
-		cliente.setTelefono("46025719");
-		cliente.setDireccion("Corvalan 2626");
-		cliente.setEstablecimiento("Casa");		
-		cliente.setId(2);
-		
-		clienteService.updateCliente(cliente);
-				
-		
-	}
-	
-}
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "/spring-clientes-abm.xml"})
+//@Ignore
+//public class TestApp {
+//
+//	@Autowired
+//	ClienteService clienteService;
+//	
+//	@Test
+//	public void testApp(){
+//	
+//		Cliente cliente = new Cliente();
+//		
+//		cliente.setNombreApellido("Renzo");
+//		cliente.setTelefono("46025719");
+//		cliente.setDireccion("Corvalan 2626");
+//		cliente.setEstablecimiento("Casa");		
+//		cliente.setId(2);
+//		
+//		clienteService.updateCliente(cliente);
+//				
+//		
+//	}
+//	
+//}
