@@ -41,7 +41,6 @@
 				        	direccion: dire,
 				        	establecimiento: est
 						}),
-			    	    'dataType': 'json',
 			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
 			    	    		alert( "Cliente creado exitosamente!" )
 			    	    	},
@@ -75,7 +74,6 @@
 				        	direccion: dire,
 				        	establecimiento: est
 						}),
-			    	    'dataType': 'json',
 			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
 			    	    		alert( "Cliente actualizado exitosamente!" )
 			    	    	},
