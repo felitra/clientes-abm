@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
+//TODO: Usar el escaneo despues de arreglar el controller web
+//@ComponentScan("com.fra.clientes.dao")
 public class PersistenceConfig {
 
 	@Autowired
