@@ -87,7 +87,6 @@
 			    	$('#nombreApellido').val('');
 			    	$('#telefono').val('');
 			    	$('#direccion').val('');
-			    	$('#establecimiento').val('');
 			    });
 			    
 			    $('#banner').click(function(event){
