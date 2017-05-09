@@ -110,6 +110,7 @@
 			    	
 			    	$("#buttonUpdate").removeClass("hidden");
 	  			} else{
+	  				$('#establecimiento').val('Casa');
 	  				$("#buttonCrear").removeClass("hidden");
 	  			}
 			}

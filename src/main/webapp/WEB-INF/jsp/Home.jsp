@@ -31,7 +31,8 @@
 	  		                next:       "Siguiente"
   		            	},
   		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
-  		            	lengthMenu: "Mostrar _MENU_ resultados"
+  		            	lengthMenu: "Mostrar _MENU_ resultados",
+  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)"
   		            }
   		        } );
   		        
@@ -65,8 +66,7 @@
 	  			}
 			}
   		</script>
-
-</head>
+	</head>
 	<body style="background-color:menu; ">
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
