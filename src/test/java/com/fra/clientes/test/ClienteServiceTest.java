@@ -21,7 +21,6 @@ import com.fra.clientes.services.exceptions.ServiceException;
 import com.fra.clientes.spring.config.MainConfig;
 
 /**
- * TODO: RE-DO Junit Tests
  * 
  * @author Renzo
  *
@@ -48,7 +47,10 @@ public class ClienteServiceTest {
 	@Test
 	public void testGetClienteById() throws ServiceException{
 		Cliente c = clienteService.getClienteById(idPrueba);
-		Assert.assertNotNull(c);
+		Assert.assertEquals("Cliente Prueba", c.getNombreApellido());
+		Assert.assertEquals("12345678", c.getTelefono());
+		Assert.assertEquals("Una direccion", c.getDireccion());
+		Assert.assertEquals("Casa", c.getEstablecimiento());
 		System.out.println(String.format("Cliente obtenido por id correctamente."));
 	}
 	
@@ -57,6 +59,21 @@ public class ClienteServiceTest {
 		clienteService.addCliente(cliente);
 		Assert.assertNotNull(cliente.getId());
 		System.out.println(String.format("%s creado con ID: %d.", cliente.toString(), cliente.getId()));
+	}
+	
+	@Test
+	public void testUpdate() throws ServiceException {
+		Cliente c = clienteService.getClienteById(idPrueba);
+		c.setNombreApellido("Otro nombre");
+		c.setDireccion("Otra direccion");
+		clienteService.updateCliente(c);
+		
+		Cliente c2 = clienteService.getClienteById(idPrueba);
+		
+		Assert.assertEquals("Otro nombre", c2.getNombreApellido());
+		Assert.assertEquals("Otra direccion", c2.getDireccion());
+
+		System.out.println(String.format("Cliente updateado por id correctamente"));
 	}
 	
 	@Test
