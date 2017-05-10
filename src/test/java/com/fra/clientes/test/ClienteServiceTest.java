@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fra.clientes.models.Cliente;
@@ -27,8 +26,6 @@ import com.fra.clientes.spring.config.MainConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {MainConfig.class})
-//TODO: Quitar configuracion web despues de arreglar el controller web
-@WebAppConfiguration
 @Transactional
 @TransactionConfiguration(defaultRollback=true, transactionManager="transactionManager")
 public class ClienteServiceTest {

@@ -2,8 +2,6 @@ package com.fra.clientes.mvc.controller;
 
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,17 +29,10 @@ public class ClientesController {
 
 	@Autowired
 	private ClienteService clienteService;
-
-	@Autowired
-	private com.fra.clientes.rest.controller.ClientesController clientesController;
 	
 	@RequestMapping(value = "/home" , method = RequestMethod.GET)
 	public ModelAndView home() throws ServiceException {
-		List<Cliente> clientes = clientesController.getClientes();
-		
-		ModelAndView modelAndView = new ModelAndView("Home");
-		modelAndView.addObject("Lista", clientes);
-		
+		ModelAndView modelAndView = new ModelAndView("Home");		
 		return modelAndView;
 	}
 
@@ -56,7 +47,6 @@ public class ClientesController {
 		Cliente cliente = clienteService.getClienteById(id);
 		ModelAndView modelAndView = new ModelAndView("DetalleCliente");
 		modelAndView.addObject("Cliente", cliente);
-		
 		return modelAndView;
 	}	
 
