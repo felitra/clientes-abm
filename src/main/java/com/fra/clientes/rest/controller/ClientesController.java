@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.services.ClienteService;
-import com.fra.clientes.services.exceptions.ClienteNotFoundException;
+import com.fra.clientes.services.exceptions.ServiceException;
 
 /**
  * Rest controller para manejar toda la API de la aplicación
@@ -37,34 +37,32 @@ public class ClientesController {
 
 	@RequestMapping(value = "/cliente", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody List<Cliente> getClientes() {
+	public @ResponseBody List<Cliente> getClientes() throws ServiceException {
 		return clienteService.getClientes();
 	}
 		
 	@RequestMapping(value = "/cliente", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void addCliente(@RequestBody Cliente cliente) {
+	public void addCliente(@RequestBody Cliente cliente) throws ServiceException {
 		clienteService.addCliente(cliente);
 	}
 
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Cliente getClienteById(@PathVariable("id") long id) throws ClienteNotFoundException {
+	public @ResponseBody Cliente getClienteById(@PathVariable("id") long id) throws ServiceException {
 		return clienteService.getClienteById(id);
 	}
 
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.PATCH)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void editCliente(@PathVariable("id") long id,
-			@RequestBody Cliente cliente) throws ClienteNotFoundException {
+	public void editCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) throws ServiceException {
 		cliente.setId(id);
 		clienteService.updateCliente(cliente);
 	}
 
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteCliente(@PathVariable("id") long id) throws ClienteNotFoundException {
+	public void deleteCliente(@PathVariable("id") long id) throws ServiceException {
 		this.clienteService.deleteClienteById(id);
 	}
-
 }

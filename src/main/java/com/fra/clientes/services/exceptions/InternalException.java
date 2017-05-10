@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author renzo.ariel.felitti
  *
  */
-@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Cliente no existente") //404
-public class ClienteNotFoundException extends ServiceException{
-
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Error del servidor")// 500
+public class InternalException extends ServiceException {
+	
 	private static final long serialVersionUID = 1L;
 
-	public ClienteNotFoundException(String msg){
+	public InternalException(String msg) {
 		super(msg);
 	}
 }

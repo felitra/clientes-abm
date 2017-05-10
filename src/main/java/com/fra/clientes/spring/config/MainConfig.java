@@ -9,6 +9,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @PropertySource("file:/apps/clientes-abm/clientes-abm.properties")
+//TODO: Restringir el escaneo despues de arreglar el controller web com.fra.clientes.services
 @ComponentScan("com.fra.clientes")
 @Import(PersistenceConfig.class)
 public class MainConfig {
