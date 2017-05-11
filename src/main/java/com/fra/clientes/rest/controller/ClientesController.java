@@ -1,7 +1,10 @@
 package com.fra.clientes.rest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +23,7 @@ import com.fra.clientes.services.exceptions.ServiceException;
 /**
  * Rest controller para manejar toda la API de la aplicación
  * 
- * /cliente GET Listing, muestra todos los clientes 
+ * /cliente GET Listing, muestra todos los clientes. /cliente?response=v2 muestra la response con el formato que espera datatable 
  * /cliente POST Save cliente
  * /cliente/{id} GET Get cliente {id}
  * /cliente/{id} PATCH Update cliente {id}
@@ -38,14 +41,18 @@ public class ClientesController {
 
 	@RequestMapping(value = "/cliente", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Object getClientes(@RequestParam String response) throws ServiceException {	
-		switch (response.toLowerCase()) {
-		case "v1":
-			return clienteService.getClientes();
-		case "v2":
-			return new DatatableResponse(clienteService.getClientes());
-		default:
-			throw new BadRequestException("Bad request");
+	public @ResponseBody ResponseEntity<?> getClientes(@RequestParam(required=false) String response) throws ServiceException {	
+		if (response == null) {
+			return new ResponseEntity<List<Cliente>>(clienteService.getClientes(), HttpStatus.OK);
+		}else {
+			switch (response.toLowerCase()) {
+			case "v1":
+				return new ResponseEntity<List<Cliente>>(clienteService.getClientes(), HttpStatus.OK);
+			case "v2":
+				return new ResponseEntity<DatatableResponse>(new DatatableResponse(clienteService.getClientes()), HttpStatus.OK);
+			default:
+				throw new BadRequestException("Bad request");
+			}	
 		}
 	}
 			
