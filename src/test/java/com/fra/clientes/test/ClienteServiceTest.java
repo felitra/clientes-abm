@@ -3,6 +3,8 @@
  */
 package com.fra.clientes.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +34,7 @@ public class ClienteServiceTest {
 
 	@Autowired
 	ClienteService clienteService;
+	
 	Cliente cliente;
 	long idPrueba;
 	
@@ -39,6 +42,14 @@ public class ClienteServiceTest {
 	public void setup(){
 		cliente = new Cliente("Renzo", "46025719", "Corvalan 2626", "Casa");
 		idPrueba = 1;
+	}
+	
+	@Test
+	public void testGetClientes() throws ServiceException{
+		List<Cliente> clientes = clienteService.getClientes();
+		boolean empty = (clientes != null && !clientes.isEmpty()) ? false : true;
+		Assert.assertFalse(empty);
+		System.out.println("Clientes obtenidos correctamente");
 	}
 	
 	@Test
@@ -52,14 +63,14 @@ public class ClienteServiceTest {
 	}
 	
 	@Test
-	public void testCrear() throws ServiceException {
+	public void testAddCliente() throws ServiceException {
 		clienteService.addCliente(cliente);
 		Assert.assertNotNull(cliente.getId());
 		System.out.println(String.format("%s creado con ID: %d.", cliente.toString(), cliente.getId()));
 	}
 	
 	@Test
-	public void testUpdate() throws ServiceException {
+	public void testUpdateCliente() throws ServiceException {
 		Cliente c = clienteService.getClienteById(idPrueba);
 		c.setNombreApellido("Otro nombre");
 		c.setDireccion("Otra direccion");
@@ -74,7 +85,7 @@ public class ClienteServiceTest {
 	}
 	
 	@Test
-	public void testDelete() throws ServiceException{
+	public void testDeleteClienteById() throws ServiceException{
 		clienteService.deleteClienteById(idPrueba);
 		
 		boolean clienteNotFound = false;

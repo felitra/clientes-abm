@@ -18,6 +18,9 @@ public class DatatableResponse {
 
 	private List<Cliente> data = new ArrayList<>();
 
+	public DatatableResponse(){
+	}
+	
 	public DatatableResponse(List<Cliente> data){
 		this.data = data;
 	}
