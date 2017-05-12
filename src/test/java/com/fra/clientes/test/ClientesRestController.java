@@ -4,14 +4,18 @@
 package com.fra.clientes.test;
 
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -21,6 +25,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fra.clientes.models.Cliente;
 import com.fra.clientes.spring.config.MainConfig;
 import com.fra.clientes.spring.config.RestConfig;
@@ -49,8 +55,13 @@ public class ClientesRestController {
 		idPrueba = 1;
 		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 	}
-
 	
+	private static byte[] convertObjectToJsonBytes(Object object)throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		return mapper.writeValueAsBytes(object);
+	}
+
 	@Test
 	public void testGetClientes() throws Exception {
 		String queryParam= "?response=";
@@ -65,7 +76,9 @@ public class ClientesRestController {
 				.andExpect(status().isOk());
 		
 		mockMvc.perform(get(String.format("/cliente%sv3", queryParam)))
-				.andExpect(status().isBadRequest());		
+				.andExpect(status().isBadRequest());
+		
+		System.out.println("Servicio GET /cliente funcionando correctamente.");
 	}
 	
 	@Test
@@ -77,11 +90,46 @@ public class ClientesRestController {
 				.andExpect(jsonPath("$.telefono", is("12345678")))
 				.andExpect(jsonPath("$.direccion", is("Una direccion")))
 				.andExpect(jsonPath("$.establecimiento", is("Casa")));
+		
+		mockMvc.perform(get("/cliente/{id}", 0))
+				.andExpect(status().isNotFound());
+		
+		System.out.println("Servicio GET /cliente/{id} funcionando correctamente.");
 	}
 	
 	@Test
-	public void testAddCliente(){
+	public void testAddCliente() throws Exception{
+		mockMvc.perform(post("/cliente")
+				.content(convertObjectToJsonBytes(cliente))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isCreated());
 		
+		System.out.println("Servicio POST /cliente funcionando correctamente.");
 	}
 	
+	@Test
+	public void testEditCliente() throws Exception{
+		mockMvc.perform(request(HttpMethod.PATCH, String.format("/cliente/%s", idPrueba))
+				.content(convertObjectToJsonBytes(cliente))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNoContent());
+		
+		mockMvc.perform(request(HttpMethod.PATCH, String.format("/cliente/%s", 0))
+				.content(convertObjectToJsonBytes(cliente))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound());
+		
+		System.out.println("Servicio PATCH /cliente/{id} funcionando correctamente.");
+	}
+	
+	@Test
+	public void testDeleteCliente() throws Exception{
+		mockMvc.perform(delete("/cliente/{id}", idPrueba))
+				.andExpect(status().isNoContent());
+		
+		mockMvc.perform(delete("/cliente/{id}", 0))
+				.andExpect(status().isNotFound());
+		
+		System.out.println("Servicio DELETE /cliente/{id} funcionando correctamente.");
+	}	
 }

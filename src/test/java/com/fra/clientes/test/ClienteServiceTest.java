@@ -62,11 +62,16 @@ public class ClienteServiceTest {
 		System.out.println(String.format("Cliente obtenido por id correctamente."));
 	}
 	
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeGetClienteById() throws ServiceException{
+		clienteService.getClienteById(0);
+	}
+	
 	@Test
 	public void testAddCliente() throws ServiceException {
 		clienteService.addCliente(cliente);
 		Assert.assertNotNull(cliente.getId());
-		System.out.println(String.format("%s creado con ID: %d.", cliente.toString(), cliente.getId()));
+		System.out.println(String.format("%s creado con ID: %d correctamente.", cliente.toString(), cliente.getId()));
 	}
 	
 	@Test
@@ -84,17 +89,21 @@ public class ClienteServiceTest {
 		System.out.println(String.format("Cliente updateado por id correctamente"));
 	}
 	
-	@Test
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeUpdateCliente() throws ServiceException {
+		cliente.setId(0);
+		clienteService.updateCliente(cliente);
+	}	
+	
+	@Test(expected=ClienteNotFoundException.class)
 	public void testDeleteClienteById() throws ServiceException{
-		clienteService.deleteClienteById(idPrueba);
-		
-		boolean clienteNotFound = false;
-		try {
-			clienteService.getClienteById(idPrueba);
-		} catch (ClienteNotFoundException e) {
-			clienteNotFound = true;
-		}
-		Assert.assertTrue(clienteNotFound);
+		clienteService.deleteClienteById(idPrueba);			
+		clienteService.getClienteById(idPrueba);
 		System.out.println(String.format("Cliente borrado correctamente."));
+	}
+	
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeDeleteClienteById() throws ServiceException{
+		clienteService.deleteClienteById(0);
 	}
 }
