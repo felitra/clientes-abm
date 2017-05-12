@@ -19,8 +19,8 @@
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
 	
-  		<script type="text/javascript" class="init">	
-	  		$(document).ready(function() {  			
+  		<script type="text/javascript" class="init">	  		
+  			$(document).ready(function() {  			
   		        $('#clientes').dataTable( {
   		            language: {
   		                search: "Buscar cliente:",
@@ -33,16 +33,42 @@
   		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
   		            	lengthMenu: "Mostrar _MENU_ resultados",
   		            	infoFiltered: "(Filtrado/s de _MAX_ totales)"
-  		            }
+  		            },
+  		            "ajax": {	            	
+  			    	    'type': 'GET',
+  			    	    'url': '${restBaseUrl}?response=v2'
+  			    	    },
+  			    	"columns": [
+  				    	        { 
+  				    	        	"className": "dt-center",
+  				    	        	"data" : "nombreApellido"
+  				    	        },
+	  			    	        { 
+  				    	        	"className": "dt-center",
+  				    	        	"data" : "telefono"
+  				    	        },
+	  			    	        { 
+  				    	        	"className": "dt-center",
+  				    	        	"data" : "direccion"
+  				    	        },
+	  			    	        { 
+  				    	        	"className": "dt-center",
+  				    	        	"data" : "establecimiento"
+  				    	        },
+	  			    	      	{
+  				    	          	"className": "dt-center",
+	  			                  	render: function (data, type, row) { return botoneraAcciones(row); },
+	  			              	}
+  			    	        ]
   		        } );
   		        
   		      	$('#banner').click(function(event) {
 	  	  			window.location.replace('${baseUrl}');
   	  			}); 		        
   		    });
-	  		
+  			  			
 	  		function confirmDelete(id, nombreApellido){
-				var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
+	  			var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
 				if (x){
 					
 					var url = '${restBaseUrl}/';
@@ -65,6 +91,20 @@
 			    	return false;
 	  			}
 			}
+	  		
+  			function botoneraAcciones(row){
+  			   	var html = "";
+
+  		        html += '<button class=\"btn btn-primary\" style=\"width: 3cm;\" id=\"editar\" onclick=\"location.href=\'${baseUrl}app/cliente/' + row.id + '/form/update\'\">Editar</button>'
+
+  		        html += '<br>';
+  		        html += '<br>';
+
+  		        html += '<button class=\"btn btn-danger\" style=\"width: 3cm;\" id=\"borrar\" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">Eliminar</button>'
+
+  		        return html;
+  			}
+
   		</script>
 	</head>
 	<body style="background-color:menu; ">
@@ -91,22 +131,6 @@
 	      				<th>Acción</th>	      				
 	      				</tr>
 	    			</thead>
-	    			<tbody>
-		    			<c:forEach var="Cliente" items="${Lista}">
-		    				<tr>
-		    					<td align="center">${Cliente.nombreApellido}</td>
-		    					<td align="center">${Cliente.telefono}</td>
-		    					<td align="center">${Cliente.direccion}</td>
-		    					<td align="center">${Cliente.establecimiento}</td>
-		    					<td align="center">
-		    						<button class="btn btn-primary" style="width: 3cm;" id="editar" onclick="location.href='${baseUrl}app/cliente/${Cliente.id}/form/update'">Editar</button>
-		    						<br>
-		    						<br>
-				  					<button class="btn btn-danger" style="width: 3cm;" id="borrar" onclick="confirmDelete(${Cliente.id}, '${Cliente.nombreApellido}')">Eliminar</button>
-                            	</td>
-                            </tr>
-		    			</c:forEach>
-	    			</tbody>
 	  			</table>
 			</div>
 		</div>

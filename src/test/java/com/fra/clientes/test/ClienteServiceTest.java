@@ -3,6 +3,8 @@
  */
 package com.fra.clientes.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fra.clientes.models.Cliente;
@@ -27,14 +28,13 @@ import com.fra.clientes.spring.config.MainConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {MainConfig.class})
-//TODO: Quitar configuracion web despues de arreglar el controller web
-@WebAppConfiguration
 @Transactional
 @TransactionConfiguration(defaultRollback=true, transactionManager="transactionManager")
 public class ClienteServiceTest {
 
 	@Autowired
 	ClienteService clienteService;
+	
 	Cliente cliente;
 	long idPrueba;
 	
@@ -42,6 +42,14 @@ public class ClienteServiceTest {
 	public void setup(){
 		cliente = new Cliente("Renzo", "46025719", "Corvalan 2626", "Casa");
 		idPrueba = 1;
+	}
+	
+	@Test
+	public void testGetClientes() throws ServiceException{
+		List<Cliente> clientes = clienteService.getClientes();
+		boolean empty = (clientes != null && !clientes.isEmpty()) ? false : true;
+		Assert.assertFalse(empty);
+		System.out.println("Clientes obtenidos correctamente");
 	}
 	
 	@Test
@@ -54,15 +62,20 @@ public class ClienteServiceTest {
 		System.out.println(String.format("Cliente obtenido por id correctamente."));
 	}
 	
-	@Test
-	public void testCrear() throws ServiceException {
-		clienteService.addCliente(cliente);
-		Assert.assertNotNull(cliente.getId());
-		System.out.println(String.format("%s creado con ID: %d.", cliente.toString(), cliente.getId()));
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeGetClienteById() throws ServiceException{
+		clienteService.getClienteById(0);
 	}
 	
 	@Test
-	public void testUpdate() throws ServiceException {
+	public void testAddCliente() throws ServiceException {
+		clienteService.addCliente(cliente);
+		Assert.assertNotNull(cliente.getId());
+		System.out.println(String.format("%s creado con ID: %d correctamente.", cliente.toString(), cliente.getId()));
+	}
+	
+	@Test
+	public void testUpdateCliente() throws ServiceException {
 		Cliente c = clienteService.getClienteById(idPrueba);
 		c.setNombreApellido("Otro nombre");
 		c.setDireccion("Otra direccion");
@@ -76,17 +89,21 @@ public class ClienteServiceTest {
 		System.out.println(String.format("Cliente updateado por id correctamente"));
 	}
 	
-	@Test
-	public void testDelete() throws ServiceException{
-		clienteService.deleteClienteById(idPrueba);
-		
-		boolean clienteNotFound = false;
-		try {
-			clienteService.getClienteById(idPrueba);
-		} catch (ClienteNotFoundException e) {
-			clienteNotFound = true;
-		}
-		Assert.assertTrue(clienteNotFound);
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeUpdateCliente() throws ServiceException {
+		cliente.setId(0);
+		clienteService.updateCliente(cliente);
+	}	
+	
+	@Test(expected=ClienteNotFoundException.class)
+	public void testDeleteClienteById() throws ServiceException{
+		clienteService.deleteClienteById(idPrueba);			
+		clienteService.getClienteById(idPrueba);
 		System.out.println(String.format("Cliente borrado correctamente."));
+	}
+	
+	@Test(expected=ClienteNotFoundException.class)
+	public void testNegativeDeleteClienteById() throws ServiceException{
+		clienteService.deleteClienteById(0);
 	}
 }
