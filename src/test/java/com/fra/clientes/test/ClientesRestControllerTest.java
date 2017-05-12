@@ -41,7 +41,7 @@ import com.fra.clientes.spring.config.RestConfig;
 @Transactional
 @WebAppConfiguration
 @TransactionConfiguration(defaultRollback=true, transactionManager="transactionManager")
-public class ClientesRestController {
+public class ClientesRestControllerTest {
 
 	@Autowired
 	private WebApplicationContext wac;
