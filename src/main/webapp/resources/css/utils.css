@@ -1,4 +1,13 @@
 @CHARSET "ISO-8859-1";
-.hidden{
+
+.hidden {
 	display: none;
+}
+
+.content-size td{
+	font-size: 16px;
+}
+
+.content-size th{
+	font-size: 19px;
 }

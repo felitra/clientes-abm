@@ -12,9 +12,10 @@
 		<spring:url var="resources" value="/resources"/>
 		<spring:url value="/" var="baseUrl" />
 		<spring:url value="/rest/cliente" var="restBaseUrl" />
-								
-		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">		
+													
+		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">				
 		<link rel="stylesheet" href="${resources}/css/jquery.dataTables.css" type="text/css">
+		<link rel="stylesheet" href="${resources}/css/utils.css" type="text/css">
 
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
@@ -57,6 +58,7 @@
   				    	        },
 	  			    	      	{
   				    	          	"className": "dt-center",
+									"width": "25%",
 	  			                  	render: function (data, type, row) { return botoneraAcciones(row); },
 	  			              	}
   			    	        ]
@@ -95,13 +97,18 @@
   			function botoneraAcciones(row){
   			   	var html = "";
 
-  		        html += '<button class=\"btn btn-primary\" style=\"width: 3cm;\" id=\"editar\" onclick=\"location.href=\'${baseUrl}app/cliente/' + row.id + '/form/update\'\">Editar</button>'
+  		      	html += '<button class="btn btn-primary btn-lg" style="width: 3cm" onclick=\"location.href=\'${baseUrl}app/cliente/' + row.id + '/form/update\'\">';
+  		        
+  		        html +='<span class="glyphicon glyphicon-edit">';
 
-  		        html += '<br>';
-  		        html += '<br>';
-
-  		        html += '<button class=\"btn btn-danger\" style=\"width: 3cm;\" id=\"borrar\" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">Eliminar</button>'
-
+  		        html +='</span> Editar</button> '
+  		        
+  		      	html += ' <button class="btn btn-danger btn-lg" style="width: 3cm" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">';
+  		        
+  		        html +='<span class="glyphicon glyphicon-trash">';
+  		        
+  		        html +='</span> Eliminar</button>'
+  		        
   		        return html;
   			}
 
@@ -118,10 +125,10 @@
 			<div class="container">
 				<br>
 				<br>		
-				<button name="button" class="btn btn-default" onclick="location.href='${baseUrl}app/cliente/form/add'">Agregar Cliente</button>
+				<button name="button" class="btn btn-default btn-lg" onclick="location.href='${baseUrl}app/cliente/form/add'">Agregar Cliente</button>
 				<br>
 				<br>
-				<table  class="display compact cell-border" id="clientes">
+				<table  class="display compact cell-border content-size" id="clientes">
 					<thead>
 						<tr>
 	        			<th>Nombre y Apellido</th>
