@@ -138,9 +138,15 @@
 		  				<label for="est">Establecimiento:</label>
 		  				<input type="text" class="form-control" id="establecimiento">
 					</div>
-				<input id="buttonCrear" type="submit" class="btn btn-default hidden" value="Agregar Cliente"/>
-				<input id="buttonUpdate" type="submit" class="btn btn-default hidden" value="Actualizar Cliente"/>
-				<input id="buttonClear" type="submit" class="btn btn-default" value="Limpiar campos"/>
+					<button id="buttonCrear" class="btn btn-default hidden">
+						<span class="glyphicon glyphicon-floppy-disk"></span> Agregar Cliente
+					</button>
+					<button id="buttonUpdate" class="btn btn-default hidden">
+						<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar Cliente
+					</button>
+					<button id="buttonClear" class="btn btn-default">
+						<span class="glyphicon glyphicon-repeat"></span> Limpiar campos
+					</button>
 			</div>
 		</div>
 	</body>
