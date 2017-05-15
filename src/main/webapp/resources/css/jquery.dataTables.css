@@ -338,6 +338,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
 	clear: both;
 	*zoom: 1;
 	zoom: 1;
+	font-size: 16px;
 }
 
 .dataTables_wrapper .dataTables_length {
