@@ -123,19 +123,19 @@
 		</div>
 		<br>
 		<div class="container-fluid">
-			<div class="container">
+			<div class="container content-size">
 					<div class="form-group">
 						<input type="text" class="form-control hidden" id="id">
-		  				<label for="usr">Nombre y Apellido:</label>
+		  				<label for="nomape">Nombre y Apellido:</label>
 		  				<input type="text" class="form-control" id="nombreApellido">
 		  				<br>
-		  				<label for="usr">Telefono:</label>
+		  				<label for="tel">Telefono:</label>
 		  				<input type="text" class="form-control" id="telefono">
 		  				<br>
-		  				<label for="usr">Direccion:</label>
+		  				<label for="dire">Direccion:</label>
 		  				<input type="text" class="form-control" id="direccion">
 		  				<br>
-		  				<label for="usr">Establecimiento:</label>
+		  				<label for="est">Establecimiento:</label>
 		  				<input type="text" class="form-control" id="establecimiento">
 					</div>
 				<input id="buttonCrear" type="submit" class="btn btn-default hidden" value="Agregar Cliente"/>
