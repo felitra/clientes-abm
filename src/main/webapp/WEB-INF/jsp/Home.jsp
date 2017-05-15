@@ -124,8 +124,10 @@
 		<div class="container-fluid">
 			<div class="container">
 				<br>
-				<br>		
-				<button name="button" class="btn btn-default btn-lg" onclick="location.href='${baseUrl}app/cliente/form/add'">Agregar Cliente</button>
+				<br>
+				<button name="button" class="btn btn-default btn-lg" onclick="location.href='${baseUrl}app/cliente/form/add'">
+				<span class="glyphicon glyphicon-plus"></span> Agregar Cliente
+				</button>
 				<br>
 				<br>
 				<table  class="display compact cell-border content-size" id="clientes">
