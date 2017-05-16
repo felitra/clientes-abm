@@ -84,13 +84,13 @@
   			function botoneraAcciones(row){
   			   	var html = "";
 
-  		      	html += '<button class="btn btn-primary content-size" style="width: 3cm" onclick=\"location.href=\'cliente/' + row.id + '/form/update\'\">';
+  		      	html += '<button class="btn btn-primary" style="width: 3cm" onclick=\"location.href=\'cliente/' + row.id + '/form/update\'\">';
   		        
   		        html +='<span class="glyphicon glyphicon-edit">';
 
   		        html +='</span> Editar</button> '
   		        
-  		      	html += ' <button class="btn btn-danger content-size" style="width: 3cm" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">';
+  		      	html += ' <button class="btn btn-danger" style="width: 3cm" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">';
   		        
   		        html +='<span class="glyphicon glyphicon-trash">';
   		        
