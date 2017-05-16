@@ -10,7 +10,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<spring:url var="resources" value="/resources"/>
-		<spring:url value="/" var="baseUrl" />
 		<spring:url value="/rest/cliente" var="restBaseUrl" />
 													
 		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">				
@@ -19,6 +18,7 @@
 
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
+		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>		
 	
   		<script type="text/javascript" class="init">	  		
   			$(document).ready(function() {  			
@@ -65,29 +65,16 @@
   		        } );
   		        
   		      	$('#banner').click(function(event) {
-	  	  			window.location.replace('${baseUrl}');
+	  	  			window.location.replace('');
   	  			}); 		        
   		    });
   			  			
 	  		function confirmDelete(id, nombreApellido){
 	  			var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
 				if (x){
-					
 					var url = '${restBaseUrl}/';
 					url += id;
-					
-					return jQuery.ajax({
-			    	    'type': 'DELETE',
-			    	    'url': url,
-			    	    'success':  function(XMLHttpRequest, textStatus, errorThrown) {
-				    	    	alert( "Cliente borrado exitosamente!" );
-				  	  			window.location.replace('${baseUrl}');
-			    	    	},
-			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
-				    	    	alert( "Error borrando cliente, intente mas tarde" );
-			    	    	}
-			    	    });
-					
+					deleteCliente(url);
 			    	return true;
 				} else {
 			    	return false;
@@ -97,7 +84,7 @@
   			function botoneraAcciones(row){
   			   	var html = "";
 
-  		      	html += '<button class="btn btn-primary content-size" style="width: 3cm" onclick=\"location.href=\'${baseUrl}app/cliente/' + row.id + '/form/update\'\">';
+  		      	html += '<button class="btn btn-primary content-size" style="width: 3cm" onclick=\"location.href=\'cliente/' + row.id + '/form/update\'\">';
   		        
   		        html +='<span class="glyphicon glyphicon-edit">';
 
@@ -125,7 +112,7 @@
 			<div class="container">
 				<br>
 				<br>
-				<button name="button" class="btn btn-default content-size" onclick="location.href='${baseUrl}app/cliente/form/add'">
+				<button name="button" class="btn btn-default content-size" onclick="location.href='cliente/form/add'">
 				<span class="glyphicon glyphicon-plus"></span> Agregar Cliente
 				</button>
 				<br>

@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="${resources}/css/utils.css" type="text/css">
 				
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
+		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>		
 		
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -27,27 +28,8 @@
 			    		tel = $('#telefono').val(),
 			    		dire = $('#direccion').val(),
 			    		est = $('#establecimiento').val();
-			    				    	
-			    	return jQuery.ajax({
-			    	    headers: { 
-			    	        'Accept': 'application/json',
-			    	        'Content-Type': 'application/json' 
-			    	    },
-			    	    'type': 'POST',
-			    	    'url': url,
-			    	    'data' : JSON.stringify({
-			    	    	nombreApellido: nomApe,
-				        	telefono: tel,
-				        	direccion: dire,
-				        	establecimiento: est
-						}),
-			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
-			    	    		alert( "Cliente creado exitosamente!" )
-			    	    	},
-			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
-				    	    	alert( "Error creando cliente, intente mas tarde" );
-			    	    	}
-			    	    });
+			    		
+			    	addOrUpdateCliente(url, 'POST', nomApe, tel, dire, est);
 			    });
 			    
 			    $('#buttonUpdate').click(function(event){
@@ -60,27 +42,8 @@
 			    		est = $('#establecimiento').val();
 			    	
 			    	url += id;
-			    				    	
-			    	return jQuery.ajax({
-			    	    headers: { 
-			    	        'Accept': 'application/json',
-			    	        'Content-Type': 'application/json' 
-			    	    },
-			    	    'type': 'PATCH',
-			    	    'url': url,
-			    	    'data' : JSON.stringify({
-			    	    	nombreApellido: nomApe,
-				        	telefono: tel,
-				        	direccion: dire,
-				        	establecimiento: est
-						}),
-			    	    'success': function(XMLHttpRequest, textStatus, errorThrown) {
-			    	    		alert( "Cliente actualizado exitosamente!" )
-			    	    	},
-			    	    'error': function(XMLHttpRequest, textStatus, errorThrown) {
-			    	    		alert("Error actualizando cliente, intente mas tarde")
-		    	    		}
-			    	    });
+			    	
+			    	addOrUpdateCliente(url, 'PATCH', nomApe, tel, dire, est);
 			    });
 			    
 			    $('#buttonClear').click(function(event){
@@ -129,14 +92,15 @@
 		  				<label for="nomape">Nombre y Apellido:</label>
 		  				<input type="text" class="form-control" id="nombreApellido">
 		  				<br>
-		  				<label for="tel">Telefono:</label>
+		  				<label for="tel">Teléfono:</label>
 		  				<input type="text" class="form-control" id="telefono">
 		  				<br>
-		  				<label for="dire">Direccion:</label>
+		  				<label for="dire">Dirección:</label>
 		  				<input type="text" class="form-control" id="direccion">
 		  				<br>
 		  				<label for="est">Establecimiento:</label>
 		  				<input type="text" class="form-control" id="establecimiento">
+		  				<br>
 					</div>
 					<button id="buttonCrear" class="btn btn-default hidden">
 						<span class="glyphicon glyphicon-floppy-disk"></span> Agregar Cliente
