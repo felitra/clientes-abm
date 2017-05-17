@@ -81,13 +81,17 @@
 	  			    buttons: {
 	  			        confirmar:{
 	  			        	text: 'Confirmar',
+	  			        	keys: ['enter'],
 	  			            action: function(){
 	  			            	var url = '${restBaseUrl}/' + id;
 		  						deleteCliente(url);
 		  			            return true;
 	  			            }
 	  			        },
-	  			        cancelar: function () {}
+	  			        cancelar:{
+	  			        	text:'Cancelar',
+	  			        	keys: ['esc']
+	  			        } 
 	  			    }
 	  			});
 			}

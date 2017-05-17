@@ -30,6 +30,12 @@ function addOrUpdateCliente(url, verb, nomApe, tel, dire, est) {
 				title: 'OK!',
 	        	type: 'green',
 	        	content: msg,
+	        	buttons: {
+  			        ok:{
+  			        	text: 'ok',
+  			        	keys: ['enter']
+  			        }
+  			    }
 			});
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -45,6 +51,12 @@ function addOrUpdateCliente(url, verb, nomApe, tel, dire, est) {
 				title: 'Error',
 	        	type: 'red',
 	        	content: msg,
+	        	buttons: {
+  			        ok:{
+  			        	text: 'ok',
+  			        	keys: ['enter']
+  			        }
+  			    }
 			});
 		}
 	});
@@ -59,6 +71,12 @@ function deleteCliente(url) {
                 title: 'Eliminar',
                 type: 'green',
                 content: 'Cliente borrado exitosamente!.',
+                buttons: {
+  			        ok:{
+  			        	text: 'ok',
+  			        	keys: ['enter']
+  			        }
+  			    }                
             });
 			$('#clientes').DataTable().ajax.reload();
 		},
@@ -67,6 +85,12 @@ function deleteCliente(url) {
                  title: 'Error',
                  type: 'red',
                  content: 'Error borrando cliente, intente mas tarde.',
+                 buttons: {
+   			        ok:{
+   			        	text: 'ok',
+   			        	keys: ['enter']
+   			        }
+   			    }
              });
 		}
 	});
