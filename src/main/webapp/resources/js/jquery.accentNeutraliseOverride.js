@@ -18,8 +18,3 @@ function neutraliseAccent(data){
 	    data;	
 }
 
-//Sigue sin funcionar
-$.fn.dataTableExt.ofnSearch = function(data){
-	debugger;
-	return neutraliseAccent(data);
-}

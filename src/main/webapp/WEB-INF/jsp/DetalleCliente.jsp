@@ -15,10 +15,12 @@
 						
 		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">
 		<link rel="stylesheet" href="${resources}/css/utils.css" type="text/css">
+		<link rel="stylesheet" href="${resources}/css/jquery-confirm.min.css" type="text/css">
 				
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>		
-		
+		<script src="${resources}/js/jquery-confirm.min.js" type="text/javascript" charset="utf8"></script>
+			
 		<script type="text/javascript">
 			$(document).ready(function(){
 			    $('#buttonCrear').click(function(event){
@@ -89,6 +91,7 @@
 			<div class="container content-size">
 					<div class="form-group">
 						<input type="text" class="form-control hidden" id="id">
+						<br>
 		  				<label for="nomape">Nombre y Apellido:</label>
 		  				<input type="text" class="form-control" id="nombreApellido">
 		  				<br>

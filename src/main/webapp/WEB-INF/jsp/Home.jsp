@@ -15,14 +15,15 @@
 		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">				
 		<link rel="stylesheet" href="${resources}/css/jquery.dataTables.css" type="text/css">
 		<link rel="stylesheet" href="${resources}/css/utils.css" type="text/css">
+		<link rel="stylesheet" href="${resources}/css/jquery-confirm.min.css" type="text/css">
 
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
 		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery.accentNeutralise.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery.accentNeutraliseOverride.js" type="text/javascript" charset="utf8"></script>
-				
-	
+		<script src="${resources}/js/jquery-confirm.min.js" type="text/javascript" charset="utf8"></script>
+					
   		<script type="text/javascript" class="init">	  		
   			$(document).ready(function() {  			
   		        var table = $('#clientes').dataTable( {
@@ -69,19 +70,26 @@
   		        	  		        
   		      	$('#banner').click(function(event) {
 	  	  			window.location.replace('');
-  	  			}); 		        
+  	  			}); 		          		      
+  		      
   		    });
   			  			
 	  		function confirmDelete(id, nombreApellido){
-	  			var x = confirm("Esta seguro que desea borrar al cliente: " + nombreApellido + " ?");
-				if (x){
-					var url = '${restBaseUrl}/';
-					url += id;
-					deleteCliente(url);
-			    	return true;
-				} else {
-			    	return false;
-	  			}
+	  			$.confirm({
+	  			    title: 'Eliminar Cliente',
+	  			    content: 'Esta seguro que desea borrar al cliente: ' + nombreApellido + ' ?',
+	  			    buttons: {
+	  			        confirmar:{
+	  			        	text: 'Confirmar',
+	  			            action: function(){
+	  			            	var url = '${restBaseUrl}/' + id;
+		  						deleteCliente(url);
+		  			            return true;
+	  			            }
+	  			        },
+	  			        cancelar: function () {}
+	  			    }
+	  			});
 			}
 	  		
   			function botoneraAcciones(row){
@@ -101,7 +109,7 @@
   		        
   		        return html;
   			}
-
+  			 
   		</script>
 	</head>
 	<body style="background-color:menu; ">
@@ -111,6 +119,7 @@
 		<div class="upcon">
 	    	<img id="banner" src="${resources}/images/home-header.jpg" style="width:100%; cursor:pointer"/>
 		</div>
+					
 		<div class="container-fluid">
 			<div class="container">
 				<br>

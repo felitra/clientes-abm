@@ -20,18 +20,32 @@ function addOrUpdateCliente(url, verb, nomApe, tel, dire, est) {
 			establecimiento : est
 		}),
 		'success' : function(XMLHttpRequest, textStatus, errorThrown) {
+			var msg;
 			if (verb == 'POST') {
-				alert("Cliente creado exitosamente!")
+				msg = "Cliente creado exitosamente!";
 			} else {
-				alert("Cliente actualizado exitosamente!")
+				msg = "Cliente actualizado exitosamente!";
 			}
+			$.alert({
+				title: 'OK!',
+	        	type: 'green',
+	        	content: msg,
+			});
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
+			var msg;
+			
 			if (verb == 'POST') {
-				alert("Error creando cliente, intente mas tarde")
+				msg = "Error creando cliente, intente mas tarde";
 			} else {
-				alert("Error actualizando cliente, intente mas tarde")
+				msg = "Error actualizando cliente, intente mas tarde";
 			}
+
+			$.alert({
+				title: 'Error',
+	        	type: 'red',
+	        	content: msg,
+			});
 		}
 	});
 }
@@ -41,11 +55,19 @@ function deleteCliente(url) {
 		'type' : 'DELETE',
 		'url' : url,
 		'success' : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("Cliente borrado exitosamente!");
+			$.alert({
+                title: 'Eliminar',
+                type: 'green',
+                content: 'Cliente borrado exitosamente!.',
+            });
 			$('#clientes').DataTable().ajax.reload();
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("Error borrando cliente, intente mas tarde");
+			 $.alert({
+                 title: 'Error',
+                 type: 'red',
+                 content: 'Error borrando cliente, intente mas tarde.',
+             });
 		}
 	});
 }
