@@ -18,52 +18,55 @@
 
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
-		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>		
+		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>
+		<script src="${resources}/js/jquery.accentNeutralise.js" type="text/javascript" charset="utf8"></script>
+		<script src="${resources}/js/jquery.accentNeutraliseOverride.js" type="text/javascript" charset="utf8"></script>
+				
 	
   		<script type="text/javascript" class="init">	  		
   			$(document).ready(function() {  			
-  		        $('#clientes').dataTable( {
-  		            language: {
-  		                search: "Buscar cliente:",
-  		              	emptyTable: "No hay clientes",
-  		              	zeroRecords: "Ningún cliente encontrado",
-  			            paginate: {
-	  		                previous:   "Previo",
-	  		                next:       "Siguiente"
-  		            	},
-  		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
-  		            	lengthMenu: "Mostrar _MENU_ resultados",
-  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)"
-  		            },
-  		            "ajax": {	            	
-  			    	    'type': 'GET',
-  			    	    'url': '${restBaseUrl}?response=v2'
-  			    	    },
-  			    	"columns": [
-  				    	        { 
-  				    	        	"className": "dt-center",
-  				    	        	"data" : "nombreApellido"
-  				    	        },
-	  			    	        { 
-  				    	        	"className": "dt-center",
-  				    	        	"data" : "telefono"
-  				    	        },
-	  			    	        { 
-  				    	        	"className": "dt-center",
-  				    	        	"data" : "direccion"
-  				    	        },
-	  			    	        { 
-  				    	        	"className": "dt-center",
-  				    	        	"data" : "establecimiento"
-  				    	        },
-	  			    	      	{
-  				    	          	"className": "dt-center",
-									"width": "25%",
-	  			                  	render: function (data, type, row) { return botoneraAcciones(row); },
-	  			              	}
-  			    	        ]
-  		        } );
-  		        
+  		        var table = $('#clientes').dataTable( {
+		  		            language: {
+		  		                search: "Buscar cliente:",
+		  		              	emptyTable: "No hay clientes",
+		  		              	zeroRecords: "Ningún cliente encontrado",
+		  			            paginate: {
+			  		                previous:   "Previo",
+			  		                next:       "Siguiente"
+		  		            	},
+		  		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
+		  		            	lengthMenu: "Mostrar _MENU_ resultados",
+		  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)"
+		  		            },
+		  		            "ajax": {	            	
+		  			    	    'type': 'GET',
+		  			    	    'url': '${restBaseUrl}?response=v2'
+		  			    	    },
+		  			    	"columns": [
+		  				    	        { 
+		  				    	        	"className": "dt-center",
+		  				    	        	"data" : "nombreApellido"
+		  				    	        },
+			  			    	        { 
+		  				    	        	"className": "dt-center",
+		  				    	        	"data" : "telefono"
+		  				    	        },
+			  			    	        { 
+		  				    	        	"className": "dt-center",
+		  				    	        	"data" : "direccion"
+		  				    	        },
+			  			    	        { 
+		  				    	        	"className": "dt-center",
+		  				    	        	"data" : "establecimiento"
+		  				    	        },
+			  			    	      	{
+		  				    	          	"className": "dt-center",
+											"width": "25%",
+			  			                  	render: function (data, type, row) { return botoneraAcciones(row); },
+			  			              	}
+		  			    	        ]
+		  		        } );
+  		        	  		        
   		      	$('#banner').click(function(event) {
 	  	  			window.location.replace('');
   	  			}); 		        
