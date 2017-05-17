@@ -1,5 +1,10 @@
 var oldFunction = jQuery.fn.DataTable.ext.type.search.string;
-jQuery.fn.DataTable.ext.type.search.string = function (data) {
+
+jQuery.fn.DataTable.ext.type.search.string = function(data) {
+	return neutraliseAccent(data);
+}; 
+
+function neutraliseAccent(data){
 	data = oldFunction(data);
 	return ! data ?
 	        '' :
@@ -10,6 +15,11 @@ jQuery.fn.DataTable.ext.type.search.string = function (data) {
                 .replace( /Í/g, 'I' )
                 .replace( /Ó/g, 'O' )
                 .replace( /Ú/g, 'U' ):
-	    data;
-	
-}; 
+	    data;	
+}
+
+//Sigue sin funcionar
+$.fn.dataTableExt.ofnSearch = function(data){
+	debugger;
+	return neutraliseAccent(data);
+}

@@ -35,7 +35,6 @@
  */
 
 jQuery.fn.DataTable.ext.type.search.string = function ( data ) {
-    debugger;
 	return ! data ?
         '' :
         typeof data === 'string' ?
