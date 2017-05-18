@@ -123,7 +123,7 @@
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
 							
 		<div class="upcon">
-	    	<img id="banner" src="${resources}/images/home-header.jpg" style="width:100%; cursor:pointer"/>
+	    	<img id="banner" src="${resources}/images/home-header.jpg" class="banner"/>
 		</div>
 					
 		<div class="container-fluid">

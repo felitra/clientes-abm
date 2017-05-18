@@ -34,3 +34,9 @@ div.content-size{
 	color: #333;
 	background-color: #f7f7f7;
 }
+
+.banner{
+  width: 100%;
+  z-index: 0;
+  cursor: pointer;
+}

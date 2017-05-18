@@ -84,7 +84,7 @@
 	<body style="background-color:menu; ">
 		
 		<div class="upcon">
-	    	<img id="banner" src="${resources}/images/home-header.jpg" style="width:100%; cursor:pointer"/>
+	    	<img id="banner" src="${resources}/images/home-header.jpg" class="banner"/>
 		</div>
 		<br>
 		<div class="container-fluid">
