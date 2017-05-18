@@ -37,8 +37,10 @@
 		  		            	},
 		  		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
 		  		            	lengthMenu: "Mostrar _MENU_ resultados",
-		  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)"
+		  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)",
+		  		            	processing: "Cargando clientes ..."
 		  		            },
+		  		          	"processing": true,
 		  		            "ajax": {	            	
 		  			    	    'type': 'GET',
 		  			    	    'url': '${restBaseUrl}?response=v2'
