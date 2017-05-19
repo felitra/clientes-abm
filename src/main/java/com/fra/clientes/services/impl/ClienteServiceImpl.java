@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 	
 	public void addCliente(Cliente c) throws ServiceException{
 		try {
-			clienteDao.addCliente(c);
+			clienteDao.add(c);
 			LOGGER.info("Cliente almacenado exitosamente, Detalles= " + c.toString());			
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
@@ -33,7 +33,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	public void updateCliente(Cliente c) throws ServiceException {
 		try {
-			clienteDao.updateCliente(c);
+			clienteDao.update(c);
 			LOGGER.info("Cliente actualizado exitosamente, Detalles= " + c.toString());
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	public void deleteClienteById(long id) throws ServiceException {
 		try {
-			clienteDao.deleteClienteById(id);
+			clienteDao.deleteById(id);
 			LOGGER.info(String.format("Cliente ID: %d borrado exitosamente", id));
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
@@ -52,7 +52,7 @@ public class ClienteServiceImpl implements ClienteService {
 	public Cliente getClienteById(long id) throws ServiceException {
 		Cliente cliente = null;
 		try {
-			cliente = clienteDao.getClienteById(id);
+			cliente = clienteDao.getById(id);
 			LOGGER.info("Cliente hallado exitosamente, Detalles=" + cliente.toString());
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
@@ -63,7 +63,7 @@ public class ClienteServiceImpl implements ClienteService {
 	public List<Cliente> getClientes() throws ServiceException{
 		List<Cliente> clientes = null;
 		try {
-			clientes = clienteDao.getClientes();
+			clientes = clienteDao.get();
 		} catch (Exception e) {
 			ExceptionHandler.handleException(e);
 		}

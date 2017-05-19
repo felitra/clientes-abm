@@ -18,12 +18,12 @@ public class ClienteDaoImpl implements ClienteDao {
 	private SessionFactory sessionFactory;
 	private static final String CLIENTE_NOT_FOUND_MESSAGE = "Cliente ID: %d no encontrado";
 
-	public void addCliente(Cliente c) {
+	public void add(Cliente c) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(c);
 	}
 
-	public void updateCliente(Cliente c) throws SQLException {
+	public void update(Cliente c) throws SQLException {
 		Session session = this.sessionFactory.getCurrentSession();
 		if (session.get(Cliente.class, c.getId()) == null) {
 			throw new SQLException(String.format(CLIENTE_NOT_FOUND_MESSAGE, c.getId()));
@@ -32,7 +32,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		}		
 	}
 
-	public void deleteClienteById(long id) throws SQLException {
+	public void deleteById(long id) throws SQLException {
 		Session session = this.sessionFactory.getCurrentSession();
 		Cliente c = (Cliente) session.get(Cliente.class, new Long(id));
 		if (c == null) {
@@ -42,7 +42,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		}
 	}
 
-	public Cliente getClienteById(long id) throws SQLException {
+	public Cliente getById(long id) throws SQLException {
 		Session session = this.sessionFactory.getCurrentSession();
 		Cliente c = (Cliente) session.get(Cliente.class, new Long(id));
 		if (c == null) {
@@ -53,7 +53,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Cliente> getClientes() {
+	public List<Cliente> get() {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Cliente> clientesList = session.createQuery("from Cliente").list();
 		return clientesList;
