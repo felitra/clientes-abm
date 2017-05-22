@@ -4,7 +4,7 @@
 <body>
 	<br>
 	<div style="text-align: center">
-		<c:redirect url="/app/home.html"/>
+		<c:redirect url="/app/home"/>
 	</div>
 </body>
 </html>

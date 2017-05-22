@@ -1,4 +1,42 @@
 @CHARSET "ISO-8859-1";
-.hidden{
+
+.hidden {
 	display: none;
+}
+
+.content-size td{
+	font-size: 16px;
+}
+
+.content-size th{
+	font-size: 19px;
+}
+
+.content-size input{
+	font-size: 16px;
+}
+
+.content-size button{
+	font-size: 16px;
+}
+
+div.content-size{
+	font-size: 19px;
+}
+
+.dataTables_wrapper .dataTables_processing {
+	position: absolute;
+	top: 65%;
+	width: 110%;
+	height: 70px;
+	text-align: center;
+	font-weight: bold;	
+	color: #333;
+	background-color: #f7f7f7;
+}
+
+.banner{
+  width: 100%;
+  z-index: 0;
+  cursor: pointer;
 }

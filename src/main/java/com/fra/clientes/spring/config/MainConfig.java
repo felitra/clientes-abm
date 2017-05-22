@@ -9,13 +9,12 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @PropertySource("file:/apps/clientes-abm/clientes-abm.properties")
-@ComponentScan("com.fra.clientes")
+@ComponentScan("com.fra.clientes.services")
 @Import(PersistenceConfig.class)
 public class MainConfig {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
-	}
-	
+	}	
 }
