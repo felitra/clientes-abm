@@ -24,18 +24,25 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 			    $('#buttonCrear').click(function(event){
-			    				    	
+			    	$('#error').empty();	
 			    	var url = '${restBaseUrl}',
 			    		nomApe = $('#nombreApellido').val(),
 			    		tel = $('#telefono').val(),
 			    		dire = $('#direccion').val(),
 			    		est = $('#establecimiento').val();
-			    		
-			    	addOrUpdateCliente(url, 'POST', nomApe, tel, dire, est);
+			    	
+			    	valid = validCliente(nomApe, tel, dire, est);
+			    	
+			    	if (valid[0]) {
+			    		addOrUpdateCliente(url, 'POST', nomApe, tel, dire, est);
+					} else{
+						var errorLabel = document.getElementById("error");
+			    		errorLabel.innerHTML= '&nbsp;&nbsp;&nbsp;' + valid[1];
+					}
 			    });
 			    
 			    $('#buttonUpdate').click(function(event){
-			    	
+			    	$('#error').empty();
 			    	var url = '${restBaseUrl}/',
 			    		id = $('#id').val(),
 			    		nomApe = $('#nombreApellido').val(),
@@ -44,8 +51,14 @@
 			    		est = $('#establecimiento').val();
 			    	
 			    	url += id;
+			    	valid = validCliente(nomApe, tel, dire, est);
 			    	
-			    	addOrUpdateCliente(url, 'PATCH', nomApe, tel, dire, est);
+			    	if (valid[0]) {
+			    		addOrUpdateCliente(url, 'PATCH', nomApe, tel, dire, est);
+			    	} else{
+						var errorLabel = document.getElementById("error");
+			    		errorLabel.innerHTML= '&nbsp;&nbsp;&nbsp;' + valid[1];
+					}
 			    });
 			    
 			    $('#buttonClear').click(function(event){
@@ -78,7 +91,25 @@
 	  				$("#buttonCrear").removeClass("hidden");
 	  			}
 			}
-  		</script>
+			
+			function validCliente(nomApe, tel, dire, est){
+				//TODO: Validar teléfono. Debería separar los teléfonos en una entidad separada. De 1 a muchos
+				var msg;
+				
+				if (nomApe.length == 0 || tel.length == 0 || dire.length == 0) {
+					msg = '*Error! Campos sin completar.';
+				} else if ((/^[a-zA-Z0-9 ]*$/.test(nomApe) == false) 
+						|| (/^[a-zA-Z0-9 ]*$/.test(dire) == false 
+						|| (/^[a-zA-Z0-9 ]*$/.test(est) == false))) {
+					msg = '*Error! Caracteres especiales no permitidos.';
+				} else if (/^[0-9- ]*$/.test(tel) == false){
+					msg = '*Error! Ingrese un teléfono válido.';
+				} else{
+					return [ true ];
+				}
+				return [ false, msg ];
+			}
+		</script>
   		
 	</head>
 	<body style="background-color:menu; ">
@@ -114,6 +145,7 @@
 					<button id="buttonClear" class="btn btn-default">
 						<span class="glyphicon glyphicon-repeat"></span> Limpiar campos
 					</button>
+					<label id="error" style="color: red;"></label>
 			</div>
 		</div>
 	</body>
