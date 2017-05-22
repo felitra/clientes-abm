@@ -99,8 +99,8 @@
 				if (nomApe.length == 0 || dire.length == 0) {
 					msg = '*Error! Campos sin completar.';
 				} else if ((/^[a-zA-Z0-9Ò— ]*$/.test(nomApe) == false) 
-						|| (/^[a-zA-Z0-9Ò— ]*$/.test(dire) == false 
-						|| (/^[a-zA-Z0-9Ò— ]*$/.test(est) == false))) {
+						|| (/^[a-zA-Z0-9Ò—.∞" ]*$/.test(dire) == false) 
+						|| (/^[a-zA-Z0-9Ò— ]*$/.test(est) == false)) {
 					msg = '*Error! Caracteres especiales no permitidos.';
 				} else if (/^[0-9- ]*$/.test(tel) == false){
 					msg = '*Error! Ingrese un telÈfono v·lido.';
@@ -124,16 +124,16 @@
 						<input type="text" class="form-control hidden" id="id">
 						<br>
 		  				<label for="nomape">Nombre y Apellido:</label>
-		  				<input type="text" class="form-control" id="nombreApellido">
+		  				<input type="text" class="form-control" id="nombreApellido" placeholder="Letras de A-Z, n˙meros">
 		  				<br>
 		  				<label for="tel">TelÈfono:</label>
-		  				<input type="text" class="form-control" id="telefono">
+		  				<input type="text" class="form-control" id="telefono" placeholder="N˙meros y guiÛn medio">
 		  				<br>
 		  				<label for="dire">DirecciÛn:</label>
-		  				<input type="text" class="form-control" id="direccion">
+		  				<input type="text" class="form-control" id="direccion" placeholder="Letras de A-Z, n˙meros, comillas, puntos y caracter: ∞">
 		  				<br>
 		  				<label for="est">Establecimiento:</label>
-		  				<input type="text" class="form-control" id="establecimiento">
+		  				<input type="text" class="form-control" id="establecimiento" placeholder="Letras de A-Z, n˙meros">
 		  				<br>
 					</div>
 					<button id="buttonCrear" class="btn btn-default hidden">
