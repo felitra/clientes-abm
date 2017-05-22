@@ -96,11 +96,11 @@
 				//TODO: Validar teléfono. Debería separar los teléfonos en una entidad separada. De 1 a muchos
 				var msg;
 				
-				if (nomApe.length == 0 || tel.length == 0 || dire.length == 0) {
+				if (nomApe.length == 0 || dire.length == 0) {
 					msg = '*Error! Campos sin completar.';
-				} else if ((/^[a-zA-Z0-9 ]*$/.test(nomApe) == false) 
-						|| (/^[a-zA-Z0-9 ]*$/.test(dire) == false 
-						|| (/^[a-zA-Z0-9 ]*$/.test(est) == false))) {
+				} else if ((/^[a-zA-Z0-9nÑ ]*$/.test(nomApe) == false) 
+						|| (/^[a-zA-Z0-9nÑ ]*$/.test(dire) == false 
+						|| (/^[a-zA-Z0-9nÑ ]*$/.test(est) == false))) {
 					msg = '*Error! Caracteres especiales no permitidos.';
 				} else if (/^[0-9- ]*$/.test(tel) == false){
 					msg = '*Error! Ingrese un teléfono válido.';
