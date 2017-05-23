@@ -73,6 +73,7 @@ $(document).ready(function() {
 		modal.style.display = "block";
 		$('#id').val('');
 		$('#nombreApellido').val('');
+		$('#nombreApellido').focus();
 		$('#telefono').val('');
 		$('#direccion').val('');
 		$('#establecimiento').val('Casa');

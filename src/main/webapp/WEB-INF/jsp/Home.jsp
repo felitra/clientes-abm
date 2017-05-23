@@ -43,7 +43,7 @@
 					<input type="text" class="form-control hidden" id="id">
 					<br>
 					<label for="nomape">Nombre y Apellido:</label>
-					<input type="text" class="form-control" id="nombreApellido" placeholder="Letras de A-Z, números" autofocus>
+					<input type="text" class="form-control" id="nombreApellido" placeholder="Letras de A-Z, números">
 					<br>
 					<label for="tel">Teléfono:</label>
 					<input type="text" class="form-control" id="telefono" placeholder="Números y guión medio">
@@ -65,7 +65,6 @@
 					</button>
 					<label id="error" style="color: red; font-size: 16px; font-weight: bold;"></label>
 				</div>
-				<br>
 				<br>
 			</div>
 		</div>
