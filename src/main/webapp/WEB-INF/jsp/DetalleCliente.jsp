@@ -131,7 +131,8 @@
 		  				<br>
 		  				<label for="dire">Dirección:</label>
 		  				<input type="text" class="form-control" id="direccion" placeholder="Letras de A-Z, números, comillas, puntos y caracter: °">
-		  				<br>
+		  				<br> 
+						<!-- TODO: Agregar mas campos para direccion y unificar todo de mi lado en jquery-->
 		  				<label for="est">Establecimiento:</label>
 		  				<input type="text" class="form-control" id="establecimiento" placeholder="Letras de A-Z, números">
 		  				<br>
@@ -146,6 +147,7 @@
 						<span class="glyphicon glyphicon-repeat"></span> Limpiar campos
 					</button>
 					<label id="error" style="color: red;"></label>
+					<br>
 			</div>
 		</div>
 	</body>

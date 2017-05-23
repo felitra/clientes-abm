@@ -1,10 +1,11 @@
 package com.fra.clientes.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 @Entity
 public class Cliente {
@@ -14,24 +15,24 @@ public class Cliente {
 	private long id;
 
 	private String nombreApellido;
-	
-	private String telefono;
+
+	private List<Telefono> telefonos;
 
 	private String direccion;
 
 	private String establecimiento;
-	
-	public Cliente (){
-		
+
+	public Cliente() {
+
 	}
-	
-	public Cliente(String nombreApellido, String telefono, String direccion, String establecimiento){
-		this.nombreApellido=nombreApellido;
-		this.telefono=telefono;
-		this.direccion=direccion;
-		this.establecimiento=establecimiento;
+
+	public Cliente(String nombreApellido, List<Telefono> telefonos, String direccion, String establecimiento) {
+		this.nombreApellido = nombreApellido;
+		this.telefonos = telefonos;
+		this.direccion = direccion;
+		this.establecimiento = establecimiento;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -48,12 +49,12 @@ public class Cliente {
 		this.nombreApellido = nombreApellido;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public List<Telefono> getTelefonos() {
+		return telefonos;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefonos(List<Telefono> telefonos) {
+		this.telefonos = telefonos;
 	}
 
 	public String getDireccion() {
@@ -74,7 +75,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return String.format("Cliente: %s con telefono: %s y direccion: %s", nombreApellido, telefono, direccion);
+		return String.format("Cliente: %s con telefonos: %s y direccion: %s", nombreApellido, telefonos, direccion);
 	}
 
 }

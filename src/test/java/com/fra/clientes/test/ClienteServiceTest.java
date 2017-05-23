@@ -3,6 +3,7 @@
  */
 package com.fra.clientes.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -16,6 +17,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fra.clientes.models.Cliente;
+import com.fra.clientes.models.Telefono;
 import com.fra.clientes.services.ClienteService;
 import com.fra.clientes.services.exceptions.ClienteNotFoundException;
 import com.fra.clientes.services.exceptions.ServiceException;
@@ -40,7 +42,10 @@ public class ClienteServiceTest {
 	
 	@Before
 	public void setup(){
-		cliente = new Cliente("Renzo", "46025719", "Corvalan 2626", "Casa");
+		List<Telefono> telefonos = new ArrayList<>();
+		telefonos.add(new Telefono(46025719));
+		
+		cliente = new Cliente("Renzo", telefonos, "Corvalan 2626", "Casa");
 		idPrueba = 1;
 	}
 	
