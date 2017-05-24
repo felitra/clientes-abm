@@ -57,44 +57,20 @@ $(document).ready(function() {
 		window.location.replace('');
 	});
 
-	// *** MODAL FUNCTIONALITY ***
-	
-	// Get the modal
-	var modal = document.getElementById('formModal');
-	
-	// Get the button that opens the modal
-	var addFormBtn = document.getElementById("addForm");
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementById("closeSpan");
-
 	// When the user clicks the Agregar Cliente button, open the modal
-	addFormBtn.onclick = function() {
-		modal.style.display = "block";
-		$('#id').val('');
-		$('#nombreApellido').val('');
-		$('#nombreApellido').focus();
-		$('#telefono').val('');
-		$('#direccion').val('');
-		$('#establecimiento').val('Casa');
-		$('#createButton').removeClass("hidden");
-		$('#updateButton').addClass("hidden");
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-
-	// When the user clicks on createButton, validate client and add it if success
-	$('#createButton').click(function(event) {
+	 $('#addForm').click(function(event) {
+		 	$('#id').val('');
+			$('#nombreApellido').val('');
+			$('#nombreApellido').focus();
+			$('#telefono').val('');
+			$('#direccion').val('');
+			$('#establecimiento').val('Casa');
+			$('#addButton').removeClass("hidden");
+			$('#updateButton').addClass("hidden");
+	 });
+	
+	// When the user clicks on addButton, validate client and add it if success
+	$('#addButton').click(function(event) {
 		$('#error').empty();
 		
 		var nomApe = $('#nombreApellido').val(), 
@@ -136,17 +112,14 @@ $(document).ready(function() {
 });
 
 // When the user clicks on Editar button, open the modal with its values
-function displayModalUpdate(id, nom, tel, dire, est) {
-	var divModal = $('#formModal');
-	divModal.css("display", "block");
-
+function setUpdateForm(id, nom, tel, dire, est) {
 	$('#id').val(id);
 	$('#nombreApellido').val(nom == 'null' ? '' : nom);
 	$('#telefono').val(tel == 'null' ? '' : tel);
 	$('#direccion').val(dire == 'null' ? '' : dire);
 	$('#establecimiento').val(est == 'null' ? '' : est);
 	$('#updateButton').removeClass("hidden");
-	$('#createButton').addClass("hidden");
+	$('#addButton').addClass("hidden");
 }
 
 // Validate a client
@@ -195,7 +168,7 @@ function confirmDelete(id, nombreApellido) {
 function botoneraAcciones(row) {
 	var html = "";
 
-	html += '<button class="btn btn-primary" style="width: 3cm" onclick=\"displayModalUpdate('
+	html += '<button class="btn btn-primary" style="width: 3cm" data-toggle="modal" data-target="#modalForm" onclick=\"setUpdateForm('
 			+ row.id
 			+ ', \''
 			+ row.nombreApellido
