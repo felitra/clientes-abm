@@ -1,4 +1,4 @@
-var restBaseUrl = '/clientes-abm/rest/cliente';
+var restBaseUrl = '/clientes-abm/rest/clientes';
 
 $(document).ready(function() {
 

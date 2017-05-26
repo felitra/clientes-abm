@@ -66,24 +66,24 @@ public class ClientesRestControllerTest {
 	public void testGetClientes() throws Exception {
 		String queryParam= "?response=";
 		
-		mockMvc.perform(get("/cliente"))
+		mockMvc.perform(get("/clientes"))
 				.andExpect(status().isOk());
 		
-		mockMvc.perform(get(String.format("/cliente%sv1", queryParam)))
+		mockMvc.perform(get(String.format("/clientes%sv1", queryParam)))
 				.andExpect(status().isOk());
 
-		mockMvc.perform(get(String.format("/cliente%sv2", queryParam)))
+		mockMvc.perform(get(String.format("/clientes%sv2", queryParam)))
 				.andExpect(status().isOk());
 		
-		mockMvc.perform(get(String.format("/cliente%sv3", queryParam)))
+		mockMvc.perform(get(String.format("/clientes%sv3", queryParam)))
 				.andExpect(status().isBadRequest());
 		
-		System.out.println("Servicio GET /cliente funcionando correctamente.");
+		System.out.println("Servicio GET /clientes funcionando correctamente.");
 	}
 	
 	@Test
 	public void testGetClienteById() throws Exception {
-		mockMvc.perform(get("/cliente/{id}", idPrueba))
+		mockMvc.perform(get("/clientes/{id}", idPrueba))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.id", is(1) ))
 				.andExpect(jsonPath("$.nombreApellido", is("Cliente Prueba")))
@@ -91,45 +91,45 @@ public class ClientesRestControllerTest {
 				.andExpect(jsonPath("$.direccion", is("Una direccion")))
 				.andExpect(jsonPath("$.establecimiento", is("Casa")));
 		
-		mockMvc.perform(get("/cliente/{id}", 0))
+		mockMvc.perform(get("/clientes/{id}", 0))
 				.andExpect(status().isNotFound());
 		
-		System.out.println("Servicio GET /cliente/{id} funcionando correctamente.");
+		System.out.println("Servicio GET /clientes/{id} funcionando correctamente.");
 	}
 	
 	@Test
 	public void testAddCliente() throws Exception{
-		mockMvc.perform(post("/cliente")
+		mockMvc.perform(post("/clientes")
 				.content(convertObjectToJsonBytes(cliente))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isCreated());
 		
-		System.out.println("Servicio POST /cliente funcionando correctamente.");
+		System.out.println("Servicio POST /clientes funcionando correctamente.");
 	}
 	
 	@Test
 	public void testEditCliente() throws Exception{
-		mockMvc.perform(request(HttpMethod.PATCH, String.format("/cliente/%s", idPrueba))
+		mockMvc.perform(request(HttpMethod.PATCH, String.format("/clientes/%s", idPrueba))
 				.content(convertObjectToJsonBytes(cliente))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNoContent());
 		
-		mockMvc.perform(request(HttpMethod.PATCH, String.format("/cliente/%s", 0))
+		mockMvc.perform(request(HttpMethod.PATCH, String.format("/clientes/%s", 0))
 				.content(convertObjectToJsonBytes(cliente))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound());
 		
-		System.out.println("Servicio PATCH /cliente/{id} funcionando correctamente.");
+		System.out.println("Servicio PATCH /clientes/{id} funcionando correctamente.");
 	}
 	
 	@Test
 	public void testDeleteCliente() throws Exception{
-		mockMvc.perform(delete("/cliente/{id}", idPrueba))
+		mockMvc.perform(delete("/clientes/{id}", idPrueba))
 				.andExpect(status().isNoContent());
 		
-		mockMvc.perform(delete("/cliente/{id}", 0))
+		mockMvc.perform(delete("/clientes/{id}", 0))
 				.andExpect(status().isNotFound());
 		
-		System.out.println("Servicio DELETE /cliente/{id} funcionando correctamente.");
+		System.out.println("Servicio DELETE /clientes/{id} funcionando correctamente.");
 	}	
 }

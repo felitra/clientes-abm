@@ -23,23 +23,24 @@ import com.fra.clientes.services.exceptions.ServiceException;
 /**
  * Rest controller para manejar toda la API de la aplicación
  * 
- * /cliente GET Listing, muestra todos los clientes. /cliente?response=v2 muestra la response con el formato que espera datatable 
- * /cliente POST Save cliente
- * /cliente/{id} GET Get cliente {id}
- * /cliente/{id} PATCH Update cliente {id}
- * /cliente/{id} DELETE Delete cliente {id} 
+ * /clientes GET Listing, muestra todos los clientes. /clientes?response=v2 muestra la response con el formato que espera datatable 
+ * /clientes POST Save cliente
+ * /clientes/{id} GET Get cliente {id}
+ * /clientes/{id} PATCH Update cliente {id}
+ * /clientes/{id} DELETE Delete cliente {id} 
  * 
  * @author renzo.ariel.felitti
  *
  */
 
 @Controller("restController")
+@RequestMapping("/clientes")
 public class ClientesController {
 
 	@Autowired
 	private ClienteService clienteService;
 
-	@RequestMapping(value = "/cliente", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody ResponseEntity<?> getClientes(@RequestParam(required=false) String response) throws ServiceException {	
 		if (response == null) {
@@ -56,26 +57,26 @@ public class ClientesController {
 		}
 	}
 			
-	@RequestMapping(value = "/cliente", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void addCliente(@RequestBody Cliente cliente) throws ServiceException {
 		clienteService.addCliente(cliente);
 	}
 
-	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Cliente getClienteById(@PathVariable("id") long id) throws ServiceException {
 		return clienteService.getClienteById(id);
 	}
 
-	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.PATCH)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void updateCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) throws ServiceException {
 		cliente.setId(id);
 		clienteService.updateCliente(cliente);
 	}
 
-	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteCliente(@PathVariable("id") long id) throws ServiceException {
 		this.clienteService.deleteClienteById(id);
