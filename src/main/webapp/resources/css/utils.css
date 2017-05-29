@@ -40,3 +40,22 @@ div.content-size{
   z-index: 0;
   cursor: pointer;
 }
+
+/* The Modal (background) */
+.modal {
+    position: fixed; /* Stay in place */
+    padding-top: 5%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content {    
+    background-color: menu;
+	margin: auto;
+    width: 130%;
+    right: 15%;
+}

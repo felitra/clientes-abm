@@ -10,7 +10,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<spring:url var="resources" value="/resources"/>
-		<spring:url value="/rest/cliente" var="restBaseUrl" />
 													
 		<link rel="stylesheet" href="${resources}/css/bootstrap.min.css" type="text/css">				
 		<link rel="stylesheet" href="${resources}/css/jquery.dataTables.css" type="text/css">
@@ -18,119 +17,79 @@
 		<link rel="stylesheet" href="${resources}/css/jquery-confirm.min.css" type="text/css">
 
 		<script src="${resources}/js/jquery.min.js" type="text/javascript" charset="utf8"></script>
+		<script src="${resources}/js/bootstrap.min.js" type="text/javascript" charset="utf8"></script>
   		<script src="${resources}/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>		
 		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery.accentNeutralise.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery.accentNeutraliseOverride.js" type="text/javascript" charset="utf8"></script>
 		<script src="${resources}/js/jquery-confirm.min.js" type="text/javascript" charset="utf8"></script>
-					
-  		<script type="text/javascript" class="init">	  		
-  			$(document).ready(function() {  			
-  		        var table = $('#clientes').dataTable( {
-		  		            language: {
-		  		                search: "Buscar cliente:",
-		  		              	emptyTable: "No hay clientes",
-		  		              	zeroRecords: "Ningún cliente encontrado",
-		  			            paginate: {
-			  		                previous:   "Previo",
-			  		                next:       "Siguiente"
-		  		            	},
-		  		            	info: "Mostrando de _START_ a _END_ clientes de los _TOTAL_ totales",
-		  		            	lengthMenu: "Mostrar _MENU_ resultados",
-		  		            	infoFiltered: "(Filtrado/s de _MAX_ totales)",
-		  		            	processing: "Cargando clientes ..."
-		  		            },
-		  		          	"processing": true,
-		  		            "ajax": {	            	
-		  			    	    'type': 'GET',
-		  			    	    'url': '${restBaseUrl}?response=v2'
-		  			    	    },
-		  			    	"columns": [
-		  				    	        { 
-		  				    	        	"className": "dt-center",
-		  				    	        	"data" : "nombreApellido"
-		  				    	        },
-			  			    	        { 
-		  				    	        	"className": "dt-center",
-		  				    	        	"data" : "telefono"
-		  				    	        },
-			  			    	        { 
-		  				    	        	"className": "dt-center",
-		  				    	        	"data" : "direccion"
-		  				    	        },
-			  			    	        { 
-		  				    	        	"className": "dt-center",
-		  				    	        	"data" : "establecimiento"
-		  				    	        },
-			  			    	      	{
-		  				    	          	"className": "dt-center",
-											"width": "25%",
-			  			                  	render: function (data, type, row) { return botoneraAcciones(row); },
-			  			              	}
-		  			    	        ]
-		  		        } );
-  		        	  		        
-  		      	$('#banner').click(function(event) {
-	  	  			window.location.replace('');
-  	  			}); 		          		      
-  		      
-  		    });
-  			  			
-	  		function confirmDelete(id, nombreApellido){
-	  			$.confirm({
-	  			    title: 'Eliminar Cliente',
-	  			    content: 'Esta seguro que desea borrar al cliente: ' + nombreApellido + ' ?',
-	  			    buttons: {
-	  			        confirmar:{
-	  			        	text: 'Confirmar',
-	  			        	keys: ['enter'],
-	  			            action: function(){
-	  			            	var url = '${restBaseUrl}/' + id;
-		  						deleteCliente(url);
-		  			            return true;
-	  			            }
-	  			        },
-	  			        cancelar:{
-	  			        	text:'Cancelar',
-	  			        	keys: ['esc']
-	  			        } 
-	  			    }
-	  			});
-			}
-	  		
-  			function botoneraAcciones(row){
-  			   	var html = "";
-
-  		      	html += '<button class="btn btn-primary" style="width: 3cm" onclick=\"location.href=\'cliente/' + row.id + '/form/update\'\">';
-  		        
-  		        html +='<span class="glyphicon glyphicon-edit">';
-
-  		        html +='</span> Editar</button> '
-  		        
-  		      	html += ' <button class="btn btn-danger" style="width: 3cm" onclick=\"confirmDelete('+row.id+',\''+row.nombreApellido+'\')\">';
-  		        
-  		        html +='<span class="glyphicon glyphicon-trash">';
-  		        
-  		        html +='</span> Eliminar</button>'
-  		        
-  		        return html;
-  			}
-  			 
-  		</script>
+		<script src="${resources}/js/jquery.httpRequests.js" type="text/javascript" charset="utf8"></script>		
+		<script src="${resources}/js/jquery.home.js" type="text/javascript" charset="utf8"></script>
 	</head>
 	<body style="background-color:menu; ">
 		
 <%-- 	To resolve properties use:	<spring:eval var="variable" expression="@environment.getProperty('property')" /> --%>
-							
+			
+		<!-- Image Banner -->
 		<div class="upcon">
 	    	<img id="banner" src="${resources}/images/home-header.jpg" class="banner"/>
-		</div>
+		</div>					
+		
+		<!-- The Modal -->
+		<div id="modalForm" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				
+				<!-- Modal content -->
+				<div class="modal-content">
 					
+					<!-- Modal header -->
+					<div class="modal-header">
+	       			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title"></h4>
+			        </div>
+					
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="form-group content-size">
+							<input type="text" class="form-control hidden" id="id">
+							<label for="nomape">Nombre y Apellido:</label>
+							<input type="text" class="form-control" id="nombreApellido" placeholder="Letras de A-Z, números">
+							<br>
+							<label for="tel">Teléfono:</label>
+							<input type="text" class="form-control" id="telefono" placeholder="Números y guión medio">
+							<br>
+							<label for="dire">Dirección:</label>
+							<input type="text" class="form-control" id="direccion" placeholder="Letras de A-Z, números, comillas, puntos y caracter: °">
+							<br>
+							<label for="est">Establecimiento:</label>
+							<input type="text" class="form-control" id="establecimiento" placeholder="Letras de A-Z, números">
+							<br>				
+							<button id="addButton" class="btn btn-default hidden">
+								<span class="glyphicon glyphicon-floppy-disk"></span> Agregar Cliente
+							</button>
+							<button id="updateButton" class="btn btn-default hidden">
+								<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar Cliente
+							</button>
+							<button id="clearButton" class="btn btn-default">
+								<span class="glyphicon glyphicon-repeat"></span> Limpiar campos
+							</button>
+							<label id="error" style="color: red; font-size: 16px; font-weight: bold;"></label>
+						</div>
+					</div>
+					
+					<!-- Modal footer -->
+					<div class="modal-footer"></div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!-- Home page -->
 		<div class="container-fluid">
 			<div class="container">
 				<br>
 				<br>
-				<button name="button" class="btn btn-default content-size" onclick="location.href='cliente/form/add'">
+				<button id="addForm" class="btn btn-default content-size" data-toggle="modal" data-target="#modalForm">
 				<span class="glyphicon glyphicon-plus"></span> Agregar Cliente
 				</button>
 				<br>

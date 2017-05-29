@@ -70,7 +70,7 @@ public class ClientesController {
 
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.PATCH)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void editCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) throws ServiceException {
+	public void updateCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) throws ServiceException {
 		cliente.setId(id);
 		clienteService.updateCliente(cliente);
 	}

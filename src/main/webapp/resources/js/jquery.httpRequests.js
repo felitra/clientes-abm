@@ -37,6 +37,7 @@ function addOrUpdateCliente(url, verb, nomApe, tel, dire, est) {
   			        }
   			    }
 			});
+			$('#clientes').DataTable().ajax.reload();
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			var msg;
