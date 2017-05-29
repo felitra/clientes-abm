@@ -59,7 +59,7 @@
 							<input type="text" class="form-control" id="telefono" placeholder="Números y guión medio">
 							<br>
 							<label for="dire">Dirección:</label>
-							<input type="text" class="form-control" id="direccion" placeholder="Letras de A-Z, números, comillas, puntos y caracter: °">
+							<input type="text" class="form-control" id="direccion" placeholder="Letras de A-Z, números, puntos y caracter: °">
 							<br>
 							<label for="est">Establecimiento:</label>
 							<input type="text" class="form-control" id="establecimiento" placeholder="Letras de A-Z, números">

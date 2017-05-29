@@ -130,7 +130,7 @@ function validCliente(nomApe, tel, dire, est) {
 	if (nomApe.length == 0 || dire.length == 0) {
 		msg = '*Error! Campos sin completar.';
 	} else if ((/^[a-zA-Z0-9ñÑ ]*$/.test(nomApe) == false)
-			|| (/^[a-zA-Z0-9ñÑ.°" ]*$/.test(dire) == false)
+			|| (/^[a-zA-Z0-9ñÑ.°º ]*$/.test(dire) == false)
 			|| (/^[a-zA-Z0-9ñÑ ]*$/.test(est) == false)) {
 		msg = '*Error! Caracteres especiales no permitidos.';
 	} else if (/^[0-9- ]*$/.test(tel) == false) {

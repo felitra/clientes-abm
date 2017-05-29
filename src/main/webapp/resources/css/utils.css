@@ -44,7 +44,7 @@ div.content-size{
 /* The Modal (background) */
 .modal {
     position: fixed; /* Stay in place */
-    padding-top: 5%; /* Location of the box */
+    padding-top: 2%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
